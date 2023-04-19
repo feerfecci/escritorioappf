@@ -1,0 +1,35 @@
+1.0.9 v9 Android: 
+    padronizado botão 'Entrar' em Login para buildCustomButton;
+    Aumento da altura do buildCustomButton;
+    Corrigido quebra de linha da Descrição nos item do Carrinho;
+    Aumento da altura do SliverAppBarSliverAppBar em MeuNasted e em ItemBottons;
+    Correção de digitação e posição de Widgets com os alertas de erro como SizedBox, ignore_in_this_file;
+    
+    
+1.0.10 Android 05/03/23 :
+    Botões maiores e fontes maiores;
+    Colocamos alterta de atualização da versão com funcionamento na tela de Login. Colocado UpdateAlertDialog;
+    Ateração do nome mostrado em alterta_trocar_login. Quando PF é 'razao_social_pf', e quando PJ 'razao_social';
+
+1.0.11 Android 25/03/23:
+    Adicionado um alertaDialog para avisos como, se o Iugu não estiver funcionando;
+    Adicionado o número de retirada quando solicitado, e o nome de quem retirou após a baixa no adm; 
+    Após o login, abre a janela de alteração de senha quando for utilizada a senha padrão;
+    Corrigido o circular progess no botão entrar do login;
+    Colocado o login direto depois do primeiro acesso;
+    Entrar com digital funcionando;
+    Implemetado o DarkMode
+
+1.0.12 Android 27/03 :
+    tirei o login de teste do textfield do email e senha
+
+1.0.13 Android 13/04:
+    Colocado barrierDismissible: false, em alertaDialogUpdate
+    AutoComplete no Forms de Login (email e senha) e Recuperação de senha (email)
+    Implemetado botao de autenticação na SplashScreen
+    Shimmer em telas e cards para loading de API
+    cor snack bar para Azul;
+    atualizado "Anotei o protocolo" para "Anotarei o protocolo"
+    TextButton para logado.buildCustomButton quando falta arquivo de corresp
+
+1.0.14

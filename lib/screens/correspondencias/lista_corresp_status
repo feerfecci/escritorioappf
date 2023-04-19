@@ -1,0 +1,35 @@
+if valor = 1 OR valor = 0 then
+        statusCorrespondencia = "Aguardando cliente"
+    end if
+    if valor = 2 then
+        statusCorrespondencia = "Enviar ao cliente"
+    end if
+    if valor = 3 then
+        statusCorrespondencia = "Enviado"
+    end if
+    if valor = 4 then
+        statusCorrespondencia = "Retirada"
+    end if
+    if valor = 5 then
+        statusCorrespondencia = "Descartada"
+    end if
+    if valor = 7 then
+        statusCorrespondencia = "Contar e avisar o cliente"
+    end if
+    if valor = 8 then
+        statusCorrespondencia = "Pagamento pendente"    
+    end if
+    if valor = 9 then
+        statusCorrespondencia = "No carrinho"
+    end if
+    if valor = 10 then
+        statusCorrespondencia = "Na fatura"
+    end if
+    if valor = 11 then
+        statusCorrespondencia = "Aguardando retirada"
+    end if
+
+    fn = escolhe_tipo_envio
+    idcorresp = id da correspondência
+    tp_envio = (2) Correios, (3) Arquivo Digital, (4) Retirada, (5) Descartar
+    idcliente = id do cliente
