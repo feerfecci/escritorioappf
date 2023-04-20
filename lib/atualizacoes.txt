@@ -33,3 +33,4 @@
     TextButton para logado.buildCustomButton quando falta arquivo de corresp
 
 1.0.14
+    separei o botão do trocar login. (logado.buildCustomButton para ElevatedButton)
