@@ -1,4 +1,4 @@
-package com.example.escritorioappf
+package com.escritorioapp.ap1
 
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.plugins.GeneratedPluginRegistrant

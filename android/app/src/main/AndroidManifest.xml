@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.escritorioappf">
+    package="com.escritorioapp.ap1">
    <application
         android:label="escritorioappf"
         android:name="${applicationName}"

@@ -1,6 +1,6 @@
 // ignore_for_file: unrelated_type_equality_checks, prefer_const_literals_to_create_immutables
 import 'dart:async';
-import 'package:connectivity/connectivity.dart';
+// import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:escritorioappf/screens/politica_privacidade/politica_privacidade.dart';
 import 'package:escritorioappf/repository/shared_preferences.dart';
 import 'package:escritorioappf/widgets/alert_dialogs/alert_update.dart';
@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController =
       TextEditingController(/*text: 'cesarreballo@gmail.com'*/);
   final senhaController = TextEditingController(/*text: '123456'*/);
-  ConnectivityResult result = ConnectivityResult.none;
+  // ConnectivityResult result = ConnectivityResult.none;
   bool _obscure = true;
   bool carregando = false;
   late StreamSubscription subscrition;
@@ -46,8 +46,8 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     checkerVersion();
 
-    subscrition =
-        Connectivity().onConnectivityChanged.listen(showConnectivitySnackBar);
+    // subscrition =
+    //     Connectivity().onConnectivityChanged.listen(showConnectivitySnackBar);
     super.initState();
   }
 
@@ -357,28 +357,29 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  showConnectivitySnackBar(ConnectivityResult result) {
-    final bool hasNoInternet = result == ConnectivityResult.none;
-    final titulo =
-        hasNoInternet ? 'Você não tem internet' : 'Você está conectado';
-    final subTitulo = hasNoInternet
-        ? 'Verifique as configurações de conexão'
-        : 'Conexão de internet restabalecida';
-    final color = hasNoInternet ? Colors.red : Colors.green;
-    //  Utils.showTopSnackBar(context, titulo, subTitulo, color);
-    switch (hasNoInternet) {
-      case true:
-        return Utils.showTopSnackBar(context, titulo, subTitulo, color);
+//   showConnectivitySnackBar(ConnectivityResult result) {
+//     final bool hasNoInternet = result == ConnectivityResult.none;
+//     final titulo =
+//         hasNoInternet ? 'Você não tem internet' : 'Você está conectado';
+//     final subTitulo = hasNoInternet
+//         ? 'Verifique as configurações de conexão'
+//         : 'Conexão de internet restabalecida';
+//     final color = hasNoInternet ? Colors.red : Colors.green;
+//     //  Utils.showTopSnackBar(context, titulo, subTitulo, color);
+//     switch (hasNoInternet) {
+//       case true:
+//         return Utils.showTopSnackBar(context, titulo, subTitulo, color);
 
-      default:
-        null;
-    }
-  }
-}
+//       default:
+//         null;
+//     }
+//   }
+// }
 
-class Utils {
-  static void showTopSnackBar(
-          BuildContext context, String titulo, String subTitulo, Color color) =>
-      showSimpleNotification(Text(titulo),
-          subtitle: Text(subTitulo), background: color);
+// class Utils {
+//   static void showTopSnackBar(
+//           BuildContext context, String titulo, String subTitulo, Color color) =>
+//       showSimpleNotification(Text(titulo),
+//           subtitle: Text(subTitulo), background: color);
+// }
 }
