@@ -78,7 +78,11 @@ buildMinhaSnackBar(BuildContext context,
             label: 'Entendi',
             textColor: Colors.white,
             onPressed: (() {
-              ScaffoldMessenger.of(context).removeCurrentSnackBar();
+              try {
+                ScaffoldMessenger.of(context).clearSnackBars();
+              } on FlutterError catch (e) {
+                print(e);
+              }
             })),
         elevation: 8,
         duration: Duration(seconds: 4),

@@ -68,86 +68,74 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
   Widget build(BuildContext context) {
     // var size = MediaQuery.of(context).size;
     return RefreshIndicator(
-      onRefresh: () async {
-        setState(() {});
-      },
-      child: FutureBuilder<dynamic>(
-        future: carrinhoApi(),
-        builder: (context, snapshot) {
-          var size = MediaQuery.of(context).size;
+        onRefresh: () async {
+          setState(() {});
+        },
+        child: ListView(
+          children: [
+            Cabecalho(
+              color: Colors.black,
+              context: context,
+              titulo: 'Carrinho',
+              subTitulo: 'Termine aqui as suas compras',
+              child: FutureBuilder<dynamic>(
+                future: carrinhoApi(),
+                builder: (context, snapshot) {
+                  var size = MediaQuery.of(context).size;
 
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return ListView(
-              children: [
-                Cabecalho(
-                    color: Colors.black,
-                    context: context,
-                    titulo: 'Carrinho',
-                    subTitulo: 'Termine aqui as suas compras',
-                    child: LoadingCarinhho()),
-              ],
-            );
-          } else if (snapshot.hasData == false || snapshot.hasError) {
-            return ErroServidor();
-          } else if (snapshot.data['mensagem'] != "") {
-            return ListView(
-              children: [
-                Cabecalho(
-                  color: Colors.black,
-                  context: context,
-                  titulo: 'Carrinho',
-                  subTitulo: 'Termine aqui as suas compras',
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(14),
-                  child: CampoVazio(
-                      mensagemAvisoVazio:
-                          'Carrinho vazio. Adicione uma correspondência aqui'),
-                ),
-              ],
-            );
-          }
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return LoadingCarinhho();
+                  } else if (snapshot.hasData == false || snapshot.hasError) {
+                    return ErroServidor();
+                  } else if (snapshot.data['mensagem'] != "") {
+                    return Padding(
+                      padding: const EdgeInsets.all(14),
+                      child: CampoVazio(
+                          mensagemAvisoVazio:
+                              'Carrinho vazio. Adicione uma correspondência aqui'),
+                    );
+                  }
 
-          var valorCarrinho = snapshot.data!['valor_total_carrinho'];
+                  var valorCarrinho = snapshot.data!['valor_total_carrinho'];
+                  logado.bolinha = snapshot.data["carrinho"].length;
 
-          Widget buildCarrinhoScreen(
-              double paddingWidth, double paddingHeight) {
-            return Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: size.width * paddingWidth,
-                  vertical: size.height * paddingHeight),
-              child: logado.buildCustomButton(
-                context,
-                onPressed: () {
-                  showCustomModalBottom(
-                    context,
-                    GerandoFatura(),
+                  Widget buildCarrinhoScreen(
+                      double paddingWidth, double paddingHeight) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: size.width * paddingWidth,
+                          vertical: size.height * paddingHeight),
+                      child: logado.buildCustomButton(
+                        context,
+                        onPressed: () {
+                          showCustomModalBottom(
+                            context,
+                            GerandoFatura(),
+                          );
+                        },
+                        'Gerar Fatura de $valorCarrinho',
+                      ),
+                    );
+                  }
+
+                  return ListView(
+                    shrinkWrap: true,
+                    physics: ClampingScrollPhysics(),
+                    children: [
+                      ListaCarrinho(),
+                      valorCarrinho != 0
+                          ? logado.buildLayout(
+                              context,
+                              seMobile: buildCarrinhoScreen(0.02, 0.01),
+                              seWeb: buildCarrinhoScreen(0.19, 0.01),
+                            )
+                          : Container()
+                    ],
                   );
                 },
-                'Gerar Fatura de $valorCarrinho',
               ),
-            );
-          }
-
-          return ListView(
-            children: [
-              Cabecalho(
-                  color: Colors.black,
-                  context: context,
-                  titulo: 'Carrinho',
-                  subTitulo: 'Termine aqui as suas compras',
-                  child: ListaCarrinho()),
-              valorCarrinho != 0
-                  ? logado.buildLayout(
-                      context,
-                      seMobile: buildCarrinhoScreen(0.02, 0.01),
-                      seWeb: buildCarrinhoScreen(0.19, 0.01),
-                    )
-                  : Container()
-            ],
-          );
-        },
-      ),
-    );
+            ),
+          ],
+        ));
   }
 }

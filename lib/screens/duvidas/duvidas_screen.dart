@@ -1,4 +1,4 @@
-import 'package:escritorioappf/screens/duvidas/widgets/lista_duvidas.dart';
+import 'package:escritorioappf/screens/duvidas/lista_duvidas.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/cabecalho.dart';
