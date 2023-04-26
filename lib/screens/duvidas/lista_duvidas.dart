@@ -6,8 +6,8 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:http/http.dart' as http;
 import 'package:html_unescape/html_unescape.dart';
 import 'dart:convert';
-import '../../../logado.dart' as logado;
-import '../../../widgets/erro_servidor.dart';
+import '../../logado.dart' as logado;
+import '../../widgets/erro_servidor.dart';
 
 class ListaDuvidas extends StatelessWidget {
   const ListaDuvidas({super.key});

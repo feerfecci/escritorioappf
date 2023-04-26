@@ -19,6 +19,7 @@ import 'widgets/alert_dialogs/alert_trocar_login.dart';
 const kBackPageColor = Color.fromARGB(255, 245, 245, 255);
 const kButtonColor = Color.fromARGB(255, 0, 134, 252);
 
+int bolinha = 0;
 double fontTitulo = 15;
 double fontSubTitulo = 14;
 double borderButton = 60;

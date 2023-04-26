@@ -53,7 +53,7 @@ class _ItensBottomState extends State<ItensBottom> {
     Widget buildItensBottons(double height) {
       return BottomNavigationBar(
         iconSize: size.height * height,
-        showUnselectedLabels: carrinho.bolinhaCarrinho == 0 ? true : false,
+        showUnselectedLabels: logado.bolinha == 0 ? true : false,
         currentIndex: widget.currentTab,
         onTap: (p) {
           _pageController.jumpToPage(p);
@@ -67,7 +67,7 @@ class _ItensBottomState extends State<ItensBottom> {
           ),
           BottomNavigationBarItem(
             icon: badge.Badge(
-              showBadge: carrinho.bolinhaCarrinho == 0 ? false : true,
+              showBadge: logado.bolinha == 0 ? false : true,
               // toAnimate: false,
               child: Icon(
                 widget.currentTab == 1

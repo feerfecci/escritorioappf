@@ -23,13 +23,17 @@ class _GerandoFaturaState extends State<GerandoFatura> {
         builder: (BuildContext context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return SizedBox(
-                    height: size.height * 0.3,
-                    width: size.width * 0.6,child: CarregandoProgress(corProgress: Colors.blue));
+                height: size.height * 0.3,
+                width: size.width * 0.6,
+                child: CarregandoProgress(corProgress: Colors.blue));
           } else if (snapshot.hasData == false || snapshot.hasError == true) {
-            return  SizedBox(width: 600,height: 500, child: Padding(
-              padding:  EdgeInsets.symmetric(vertical: size.height*0.05),
-              child: ErroServidor(),
-            ));
+            return SizedBox(
+                width: 600,
+                height: 500,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: size.height * 0.05),
+                  child: ErroServidor(),
+                ));
           }
           var qrCode = snapshot.data['pix']['qrcode'];
           var qrcodeText = snapshot.data['pix']['qrcode_text'];
@@ -80,9 +84,12 @@ class _GerandoFaturaState extends State<GerandoFatura> {
                       buildMinhaSnackBar(context,
                           categoria: 'codigo_pix_copiado',
                           icon: Icons.check_circle_outline_outlined);
-                          
-                      logado.navigatorRoute(context,ItensBottom(currentTab: 0));
-                     
+
+                      logado.navigatorRoute(
+                          context, ItensBottom(currentTab: 0));
+                      setState(() {
+                        logado.bolinha = 0;
+                      });
                     },
                   ),
                 ),

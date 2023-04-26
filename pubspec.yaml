@@ -39,9 +39,10 @@ dependencies:
   local_auth: ^2.1.6
   shimmer: ^2.0.0
   badges: ^3.1.1
+  flutter_launcher_icons: ^0.10.0
   
 # icone ao abrir o app
-#   flutter_native_splash: ^2.2.12
+  # flutter_native_splash: ^2.2.12
 # flutter_native_splash:
 #   color: "#42a5f5"  
 #   image: assets/icons/logo.png
@@ -51,7 +52,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  flutter_launcher_icons: ^0.10.0
   fluttertoast: ^8.1.1
 
 flutter_icons:

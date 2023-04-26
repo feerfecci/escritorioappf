@@ -14,7 +14,7 @@ import 'package:http/http.dart' as http;
 
 import 'loading_carrinho.dart';
 
-int bolinhaCarrinho = 0;
+int? bolinhaCarrinho;
 int totalCarrinho = 0;
 carrinhoApi() async {
   var url = Uri.parse(
@@ -67,7 +67,7 @@ class _ListCarrinhoState extends State<ListaCarrinho> {
               shrinkWrap: true,
               itemCount: snapshot.data["carrinho"].length,
               itemBuilder: ((context, index) {
-                carrinho.bolinhaCarrinho = snapshot.data["carrinho"].length;
+                logado.bolinha = snapshot.data["carrinho"].length;
                 var carrinhoIndex = snapshot.data['carrinho'][index];
                 int idCorresp = carrinhoIndex['id'];
                 String remetente = carrinhoIndex['remetente'];
