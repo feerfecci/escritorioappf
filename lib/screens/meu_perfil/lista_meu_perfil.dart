@@ -187,72 +187,102 @@ class ListaMeuPerfilState extends State<ListaMeuPerfil> {
             TextInputType? keyboardType,
             final void Function(String? text)? onSaved,
           }) {
-            return logado.buildLayout(
-              context,
-              seMobile: Padding(
-                padding: EdgeInsets.symmetric(vertical: size.height * 0.006),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    buildTituloField('$titulo :'),
-                    TextFormField(
-                      keyboardType: keyboardType,
-                      onSaved: onSaved,
-                      initialValue: snapshot.data[categoriaApi][dadoApi],
-                      textAlign: TextAlign.start,
-                      maxLines: 5,
-                      minLines: 1,
-                      textAlignVertical: TextAlignVertical.center,
-                      textInputAction: TextInputAction.next,
-                      decoration: InputDecoration(
-                        contentPadding:
-                            EdgeInsets.only(left: size.width * 0.04),
-                        filled: true,
-                        fillColor: Theme.of(context).primaryColor,
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16)),
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                            borderSide: BorderSide(color: Colors.black26)),
-                      ),
+            return Padding(
+              padding: EdgeInsets.symmetric(vertical: size.height * 0.006),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  buildTituloField('$titulo :'),
+                  TextFormField(
+                    keyboardType: keyboardType,
+                    onSaved: onSaved,
+                    initialValue: snapshot.data[categoriaApi][dadoApi],
+                    textAlign: TextAlign.start,
+                    maxLines: 5,
+                    minLines: 1,
+                    textAlignVertical: TextAlignVertical.center,
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(left: size.width * 0.04),
+                      filled: true,
+                      fillColor: Theme.of(context).primaryColor,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16)),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: BorderSide(color: Colors.black26)),
                     ),
-                  ],
-                ),
-              ),
-              seWeb: Padding(
-                padding: EdgeInsets.symmetric(vertical: size.height * 0.006),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    buildTituloField('$titulo :'),
-                    TextFormField(
-                      keyboardType: keyboardType,
-                      onSaved: onSaved,
-                      initialValue: snapshot.data[categoriaApi][dadoApi],
-                      textAlign: TextAlign.start,
-
-                      maxLines: 5,
-                      minLines: 1,
-                      textAlignVertical: TextAlignVertical.center,
-                      // controller: controller,
-                      textInputAction: TextInputAction.next,
-
-                      decoration: InputDecoration(
-                        contentPadding:
-                            EdgeInsets.only(left: size.width * 0.04),
-                        filled: true,
-                        fillColor: Theme.of(context).primaryColor,
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16)),
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                            borderSide: BorderSide(color: Colors.black26)),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             );
+
+            // logado.buildLayout(
+            //   context,
+            //   seMobile: Padding(
+            //     padding: EdgeInsets.symmetric(vertical: size.height * 0.006),
+            //     child: Column(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         buildTituloField('$titulo :'),
+            //         TextFormField(
+            //           keyboardType: keyboardType,
+            //           onSaved: onSaved,
+            //           initialValue: snapshot.data[categoriaApi][dadoApi],
+            //           textAlign: TextAlign.start,
+            //           maxLines: 5,
+            //           minLines: 1,
+            //           textAlignVertical: TextAlignVertical.center,
+            //           textInputAction: TextInputAction.next,
+            //           decoration: InputDecoration(
+            //             contentPadding:
+            //                 EdgeInsets.only(left: size.width * 0.04),
+            //             filled: true,
+            //             fillColor: Theme.of(context).primaryColor,
+            //             border: OutlineInputBorder(
+            //                 borderRadius: BorderRadius.circular(16)),
+            //             enabledBorder: OutlineInputBorder(
+            //                 borderRadius: BorderRadius.circular(16),
+            //                 borderSide: BorderSide(color: Colors.black26)),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            //   seWeb: Padding(
+            //     padding: EdgeInsets.symmetric(vertical: size.height * 0.006),
+            //     child: Column(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         buildTituloField('$titulo :'),
+            //         TextFormField(
+            //           keyboardType: keyboardType,
+            //           onSaved: onSaved,
+            //           initialValue: snapshot.data[categoriaApi][dadoApi],
+            //           textAlign: TextAlign.start,
+
+            //           maxLines: 5,
+            //           minLines: 1,
+            //           textAlignVertical: TextAlignVertical.center,
+            //           // controller: controller,
+            //           textInputAction: TextInputAction.next,
+
+            //           decoration: InputDecoration(
+            //             contentPadding:
+            //                 EdgeInsets.only(left: size.width * 0.04),
+            //             filled: true,
+            //             fillColor: Theme.of(context).primaryColor,
+            //             border: OutlineInputBorder(
+            //                 borderRadius: BorderRadius.circular(16)),
+            //             enabledBorder: OutlineInputBorder(
+            //                 borderRadius: BorderRadius.circular(16),
+            //                 borderSide: BorderSide(color: Colors.black26)),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // );
           }
 
           Widget buildTextFormFormat({
