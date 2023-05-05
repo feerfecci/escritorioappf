@@ -47,13 +47,10 @@ utilizarCredito(int creditoCliente, int valorCarrinho) async {
 }
 
 var preco = carrinho.totalCarrinho;
-showCustomModalBottom(
-  BuildContext context,
-  child,
-) {
+showCustomModalBottom(BuildContext context, child, {required isDismissible}) {
   showModalBottomSheet(
     enableDrag: false,
-    isDismissible: false,
+    isDismissible: isDismissible,
     isScrollControlled: true,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
@@ -110,6 +107,7 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
                         onPressed: () {
                           showCustomModalBottom(
                             context,
+                            isDismissible: false,
                             GerandoFatura(),
                           );
                         },

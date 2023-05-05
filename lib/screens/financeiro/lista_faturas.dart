@@ -1,5 +1,6 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, non_constant_identifier_names
 
+import 'package:escritorioappf/screens/carrinho/carrinho_screen.dart';
 import 'package:escritorioappf/widgets/box_shadow.dart';
 import 'package:escritorioappf/widgets/shimmer_widget.dart';
 import 'package:escritorioappf/widgets/snackbar/snack.dart';
@@ -78,6 +79,7 @@ copiaButton(var fatId) {
                         context,
                         'Copiar código pix',
                         onPressed: () async {
+                          Navigator.of(context).pop();
                           Clipboard.setData(
                             ClipboardData(
                               text: qrCodePix,
@@ -258,7 +260,33 @@ showFaturas() {
                       )),
                     ),
                     usuario[index]["status"] == "pending"
-                        ? copiaButton(idFatura)
+                        ? logado.buildCustomButton(context, 'Fazer Pagamento',
+                            onPressed: () {
+                            showCustomModalBottom(
+                                context,
+                                isDismissible: true,
+                                Padding(
+                                  padding: EdgeInsets.all(size.width * 0.01),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: size.height * 0.01),
+                                        child: logado.buildTextTitle(
+                                            'Escolha a forma de pagamento'),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: size.height * 0.006),
+                                        child: logado.buildTextSubTitle(
+                                            'Vencimento: $parsedDate'),
+                                      ),
+                                      copiaButton(idFatura)
+                                    ],
+                                  ),
+                                ));
+                          })
                         : SizedBox(
                             height: 1,
                           )

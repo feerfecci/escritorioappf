@@ -25,11 +25,16 @@ class SplashScreenState extends State<SplashScreen> {
         Future authentic() async {
           final auth = await LocalAuthApi.authenticate();
           final hasBiometrics = await LocalAuthApi.hasBiometrics();
-          if (auth && hasBiometrics) {
+          if (hasBiometrics) {
+            if (auth) {
+              return efetuaLogin(
+                  context, infos.values.first, infos.values.last, '');
+            } else {
+              false;
+            }
+          } else {
             return efetuaLogin(
                 context, infos.values.first, infos.values.last, '');
-          } else {
-            efetuaLogin(context, infos.values.first, infos.values.last, '');
           }
         }
 

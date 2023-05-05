@@ -182,6 +182,7 @@ efetuaLogin(context, String email, String senha, String codigoCliente) async {
   if (codigoCliente == '') {
     var url =
         Uri.parse('${comecoAPI}login/?fn=login&email=$email&senha=$senha');
+    
     var resposta = await http.get(url);
     if (resposta.statusCode == 200) {
       dynamic login = json.decode(resposta.body);
