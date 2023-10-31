@@ -10,8 +10,6 @@ import 'screens/home/home_principal.dart';
 import 'widgets/custom_drawer.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
-import 'package:escritorioappf/screens/carrinho/widgets/lista_carrinho.dart'
-    as carrinho;
 import '../../logado.dart' as logado;
 
 // ignore: must_be_immutable
@@ -103,7 +101,6 @@ class _ItensBottomState extends State<ItensBottom> {
 
           return false;
         } else {
-          print(differenceBack);
           Fluttertoast.cancel();
           return true;
         }

@@ -39,7 +39,8 @@ class _FinanceiroScreenState extends State<FinanceiroScreen> {
                         context: context,
                         titulo: 'Financeiro',
                         subTitulo: 'Fique por dentro das suas faturas',
-                        child: showFaturas()),
+                        child: showFaturas(),
+                        ),
                   ],
                 )
               ],

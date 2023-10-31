@@ -2,13 +2,11 @@
 import 'dart:async';
 // import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:escritorioappf/screens/politica_privacidade/politica_privacidade.dart';
-import 'package:escritorioappf/repository/shared_preferences.dart';
 import 'package:escritorioappf/widgets/alert_dialogs/alert_update.dart';
 import 'package:escritorioappf/widgets/snackbar/snack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app_version_checker/flutter_app_version_checker.dart';
-import 'package:overlay_support/overlay_support.dart';
 import 'package:validatorless/validatorless.dart';
 import '../../logado.dart';
 import '../../../logado.dart' as logado;
@@ -24,7 +22,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
-  final LocalSetting _prefService = LocalSetting();
   final emailController =
       TextEditingController(/*text: 'cesarreballo@gmail.com'*/);
   final senhaController = TextEditingController(/*text: '123456'*/);
@@ -59,14 +56,15 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  _startLoading() async {
+  _startLoading(bool isToRemember) async {
     setState(() {
       carregando = !carregando;
     });
 
     Timer(Duration(seconds: 3), () async {
       await efetuaLogin(
-          context, emailController.text, senhaController.text, logado.codigo);
+          context, emailController.text, senhaController.text, logado.codigo,
+          isToRemember: isToRemember);
       setState(() {
         carregando = !carregando;
       });
@@ -181,14 +179,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 borderRadius: BorderRadius.circular(logado.borderButton))),
         onPressed: () async {
           var formValid = formKey.currentState?.validate() ?? false;
-          if (formValid && isChecked == true) {
-            await _prefService
-                .createChache(emailController.text, senhaController.text)
-                .whenComplete(() async {
-              _startLoading();
-            });
-          } else if (formValid && isChecked == false) {
-            _startLoading();
+          if (formValid) {
+            _startLoading(isChecked);
           } else if (emailController.text != '' && senhaController != '') {
             buildMinhaSnackBar(context, categoria: 'login_erro');
           } else {

@@ -1,5 +1,4 @@
 // ignore_for_file: non_constant_identifier_names
-
 library globals;
 
 import 'package:escritorioappf/screens/carrinho/carrinho_screen.dart';
@@ -9,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../logado.dart' as logado;
 import 'dart:convert';
-import '../widgets/lista_carrinho.dart' as carrinho;
 import 'package:http/http.dart' as http;
 
 import 'loading_carrinho.dart';

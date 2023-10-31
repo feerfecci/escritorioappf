@@ -192,7 +192,7 @@ class ListaMeuPerfilState extends State<ListaMeuPerfil> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  buildTituloField('$titulo :'),
+                  buildTituloField(titulo),
                   TextFormField(
                     keyboardType: keyboardType,
                     onSaved: onSaved,
@@ -298,7 +298,7 @@ class ListaMeuPerfilState extends State<ListaMeuPerfil> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  buildTituloField('$titulo :'),
+                  buildTituloField(titulo),
                   TextFormField(
                     keyboardType: keyboardType,
                     onSaved: onSaved,
@@ -444,9 +444,10 @@ class ListaMeuPerfilState extends State<ListaMeuPerfil> {
                           changeApi(
                               '${logado.comecoAPI}/clientes/?fn=alterar_senha&email_principal=${logado.emailUser}&senha=${novaSenhaController.text}');
                           Navigator.of(context).pop();
-                          buildMinhaSnackBar(context,
-                              categoria: 'senha_alterada',
-                              icon: Icons.error_outline);
+                          buildMinhaSnackBar(
+                            context,
+                            categoria: 'senha_alterada',
+                          );
                         } else {
                           // ignore: unrelated_type_equality_checks
                           formValid = formKey.currentState == false;
@@ -762,11 +763,15 @@ class ListaMeuPerfilState extends State<ListaMeuPerfil> {
                                 keyboardType: TextInputType.emailAddress,
                               ),
                             ]),
-                        logado.buildCustomButton(
-                            context, 'Troca minha senha de acesso',
-                            onPressed: () {
-                          alertaSenha(context);
-                        }),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: size.height * 0.01),
+                          child: logado.buildCustomButton(
+                              context, 'Trocar minha senha de acesso',
+                              onPressed: () {
+                            alertaSenha(context);
+                          }),
+                        ),
                       ],
                     ),
                   )),

@@ -8,6 +8,8 @@ import 'package:html_unescape/html_unescape.dart';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../logado.dart' as logado;
 import '../../widgets/erro_servidor.dart';
 import '../../widgets/shimmer_widget.dart';
@@ -100,8 +102,12 @@ class _ListaNotificacaoState extends State<ListaNotificacao> {
               itemCount: snapshot.data!['notificacoes'].length,
               itemBuilder: ((context, index) {
                 int notificLidas = snapshot.data['notificacoes'][index]['lida'];
+
                 notific.quantidadeNaoLida = snapshot.data['total_nao_lidas'];
+
                 var notif = snapshot.data!['notificacoes'];
+                var link = snapshot.data['notificacoes'][index]['link'];
+                var datahora = snapshot.data['notificacoes'][index]['datahora'];
                 var unescape = HtmlUnescape();
                 return StatefulBuilder(builder: (context, snapshot) {
                   Widget buildNotificationTile(double width) {
@@ -132,12 +138,29 @@ class _ListaNotificacaoState extends State<ListaNotificacao> {
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: size.width * 0.020),
-                                      child: Html(
-                                        data: notif[index]['mensagem'],
-                                        style: {
-                                          "strong":
-                                              Style(fontWeight: FontWeight.bold)
-                                        },
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Html(
+                                            data: notif[index]['mensagem'],
+                                            style: {
+                                              "strong": Style(
+                                                  fontWeight: FontWeight.bold)
+                                            },
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: size.height * 0.01,
+                                                horizontal: size.width * 0.020),
+                                            child: logado.buildTextSubTitle(
+                                              DateFormat('HH:mm • dd/MM/yyyy')
+                                                  .format(
+                                                DateTime.parse(datahora),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],

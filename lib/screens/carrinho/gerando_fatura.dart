@@ -81,9 +81,10 @@ class _GerandoFaturaState extends State<GerandoFatura> {
                       );
                       Navigator.of(context).pop();
 
-                      buildMinhaSnackBar(context,
-                          categoria: 'codigo_pix_copiado',
-                          icon: Icons.check_circle_outline_outlined);
+                      buildMinhaSnackBar(
+                        context,
+                        categoria: 'codigo_pix_copiado',
+                      );
 
                       logado.navigatorRoute(
                           context, ItensBottom(currentTab: 0));

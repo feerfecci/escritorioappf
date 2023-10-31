@@ -5,7 +5,6 @@
 class UserModel {
   final String responsavel;
   final String email_principal;
-  // final String email;
   final String cep;
   final String endereco;
   final String numero;
@@ -45,7 +44,6 @@ class UserModel {
   UserModel({
     this.responsavel = '',
     this.email_principal = '',
-    // this.email = '',
     this.cep = '',
     this.endereco = '',
     this.numero = '',

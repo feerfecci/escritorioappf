@@ -1,14 +1,11 @@
 library globals;
 
 import 'dart:async';
-
-import 'package:escritorioappf/widgets/alert_dialogs/alert_devendo.dart';
 import 'package:escritorioappf/widgets/erro_servidor.dart';
 import 'package:escritorioappf/widgets/snackbar/snack.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import 'itens_bottom.dart';
 import 'repository/shared_preferences.dart';
 import 'screens/login/login_screen.dart';
@@ -173,103 +170,75 @@ verificarAvisos(context) async {
   }
 }
 
-efetuaLogin(context, String email, String senha, String codigoCliente) async {
+efetuaLogin(context, String email, String senha, String codigoCliente,
+    {bool isToRemember = false}) async {
   // showSnackBar(context) {
   //   ScaffoldMessenger.of(context).clearSnackBars();
   //   return buildMinhaSnackBar(context,
-  //       categoria: 'login_erro', icon: Icons.check_circle_outline_outlined);
+  //       categoria: 'login_erro',  );
   // }
-  if (codigoCliente == '') {
-    var url =
-        Uri.parse('${comecoAPI}login/?fn=login&email=$email&senha=$senha');
-    
-    var resposta = await http.get(url);
-    if (resposta.statusCode == 200) {
-      dynamic login = json.decode(resposta.body);
-      bool erro = login['erro'];
-      if (erro == false) {
-        var parteLogin = login['login'][0];
-        emailUser = email;
-        senhaUser = senha;
-        totalEmpresas = login['total_empresas'];
-        periodo = parteLogin['ultimo_login'];
-        razaoSocial = parteLogin['razao_social'];
-        codigo = parteLogin['codigo'];
-        idCliente = parteLogin['id'];
-        idIugu = parteLogin['idiugu'];
-        sessCar = parteLogin['sesscar'];
-        nomeSaudacao = parteLogin["nome_saudacao"];
-        creditoCliente = parteLogin['credito'];
-        statusCliente = parteLogin['financeiro']['aviso'];
+  final LocalSetting prefService = LocalSetting();
+  var url = Uri.parse(
+      '${comecoAPI}login/?fn=login&email=$email&senha=$senha${codigoCliente != '' ? '&codigo=$codigoCliente' : ''}');
 
-        navigatorRoute(context, ItensBottom(currentTab: 0));
-        Timer(Duration(seconds: 4), () {
-          verificarAvisos(context);
-          if (senha == '123mudar') {
-            alertDialogSenhaPadrao(context);
-          }
-        });
-        if (totalEmpresas != 1) {
-          // alertaTrocarUsuario(context);
-          alertaDialogTrocarLogin(context);
-        }
-      } else {
-        final LocalSetting prefService = LocalSetting();
-        prefService.readChache().then((value) {
-          Map<String, dynamic> infos = value;
-          if (infos.values.first != null) {
-            navigatorRoute(context, LoginScreen());
-            prefService.removeChache();
-            return buildMinhaSnackBar(context,
-                categoria: 'login_erro',
-                icon: Icons.check_circle_outline_outlined);
-          } else {
-            return buildMinhaSnackBar(context,
-                categoria: 'login_erro',
-                icon: Icons.check_circle_outline_outlined);
-          }
-        });
+  var resposta = await http.get(url);
+  if (resposta.statusCode == 200) {
+    dynamic login = json.decode(resposta.body);
+    bool erro = login['erro'];
+
+    if (erro == false) {
+      var parteLogin = login['login'][0];
+      if (codigoCliente == '') {
+        totalEmpresas = login['total_empresas'];
+      }
+      emailUser = email;
+      senhaUser = senha;
+      periodo = parteLogin['ultimo_login'];
+
+      razaoSocial = parteLogin['razao_social'];
+      codigo = parteLogin['codigo'];
+      idCliente = parteLogin['id'];
+      idIugu = parteLogin['idiugu'];
+      sessCar = parteLogin['sesscar'];
+      nomeSaudacao = parteLogin["nome_saudacao"];
+      creditoCliente = parteLogin['credito'];
+      statusCliente = parteLogin['financeiro']['aviso'];
+
+      navigatorRoute(context, ItensBottom(currentTab: 0));
+
+      verificarAvisos(context);
+      if (senha == '123mudar') {
+        alertDialogSenhaPadrao(context);
+      }
+
+      if (totalEmpresas != 1 && codigoCliente == '') {
+        // alertaTrocarUsuario(context);
+        alertaDialogTrocarLogin(context);
+      }
+      if (isToRemember) {
+        prefService.createChache(email, senha);
       }
     } else {
-      return ErroServidor();
+      prefService.readChache().then((value) {
+        Map<String, dynamic> infos = value;
+
+        if (infos['email'] != null) {
+          navigatorRoute(context, LoginScreen());
+          prefService.removeChache();
+
+          return buildMinhaSnackBar(
+            context,
+            categoria: 'login_erro',
+          );
+        } else {
+          return buildMinhaSnackBar(
+            context,
+            categoria: 'login_erro',
+          );
+        }
+      });
     }
   } else {
-    var url = Uri.parse(
-        '${comecoAPI}login/?fn=login&email=$email&senha=$senha&codigo=$codigoCliente');
-    var resposta = await http.get(url);
-    if (resposta.statusCode == 200) {
-      dynamic login = json.decode(resposta.body);
-      bool erro = login['erro'];
-
-      if (erro == false) {
-        var parteLogin = login['login'][0];
-        emailUser = email;
-        senhaUser = senha;
-        periodo = parteLogin['ultimo_login'];
-        razaoSocial = parteLogin['razao_social'];
-        codigo = parteLogin['codigo'];
-        idCliente = parteLogin['id'];
-        idIugu = parteLogin['idiugu'];
-        sessCar = parteLogin['sesscar'];
-        statusCliente = parteLogin['financeiro']['aviso'];
-        nomeSaudacao = parteLogin["nome_saudacao"];
-        creditoCliente = parteLogin['credito'];
-
-        navigatorRoute(context, ItensBottom(currentTab: 0));
-        Timer(Duration(seconds: 4), () {
-          verificarAvisos(context);
-        });
-
-        if (statusCliente != '') {
-          return alertaDialogDevendo(context);
-        }
-      } else {
-        return buildMinhaSnackBar(
-          context,
-          categoria: 'login_erro',
-          icon: Icons.check_circle_outline_outlined,
-        );
-      }
-    }
+    return ErroServidor();
   }
 }

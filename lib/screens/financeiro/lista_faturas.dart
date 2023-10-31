@@ -85,9 +85,10 @@ copiaButton(var fatId) {
                               text: qrCodePix,
                             ),
                           );
-                          buildMinhaSnackBar(context,
-                              categoria: 'codigo_pix_copiado',
-                              icon: Icons.check_circle_outline_outlined);
+                          buildMinhaSnackBar(
+                            context,
+                            categoria: 'codigo_pix_copiado',
+                          );
                         },
                       );
                     }
@@ -103,9 +104,10 @@ copiaButton(var fatId) {
                                   ['digitable_line'],
                             ),
                           );
-                          buildMinhaSnackBar(context,
-                              categoria: 'codigo_pix_copiado',
-                              icon: Icons.check_circle_outline_outlined);
+                          buildMinhaSnackBar(
+                            context,
+                            categoria: 'codigo_pix_copiado',
+                          );
                         },
                       );
                     }
@@ -182,9 +184,7 @@ showFaturas() {
             shrinkWrap: true,
             itemCount: 4,
             itemBuilder: (context, index) => buildFinancLoading(context));
-      } else if (snapshot.hasData == false || snapshot.hasError == true) {
-        return ErroServidor();
-      } else {
+      } else if (snapshot.hasData) {
         return ListView.builder(
           physics: ClampingScrollPhysics(),
           shrinkWrap: true,
@@ -296,6 +296,8 @@ showFaturas() {
             );
           }),
         );
+      } else {
+        return ErroServidor();
       }
     },
   );

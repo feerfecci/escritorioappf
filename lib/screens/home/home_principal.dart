@@ -160,10 +160,11 @@ class _HomePrincipalState extends State<HomePrincipal> {
     if (horarioAgora >= 00 && horarioAgora < 12) {
       saudacao = "Bom dia";
     } else if (horarioAgora >= 12 && horarioAgora < 18) {
-      saudacao = "Boa tarde";
+      saudacao = "Boa Tarde";
     } else {
-      saudacao = "Boa noite";
+      saudacao = "Boa Noite";
     }
+
     Widget buildCardAluguel({required double pedding}) {
       return Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width * pedding),

@@ -218,8 +218,9 @@ class _AlertDialogSolicitacaoState extends State<AlertDialogSolicitacao> {
   buildSnackBar(context) {
     ScaffoldMessenger.of(context).clearSnackBars();
 
-    buildMinhaSnackBar(context,
-        categoria: 'correspondencia_solicitada',
-        icon: Icons.check_circle_outline_outlined);
+    buildMinhaSnackBar(
+      context,
+      categoria: 'correspondencia_solicitada',
+    );
   }
 }

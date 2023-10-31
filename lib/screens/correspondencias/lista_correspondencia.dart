@@ -438,9 +438,10 @@ class _ListaCorrespState extends State<ListaCorresp> {
                             startLoading();
                             adicionarCarrinho(idCorresp);
 
-                            buildMinhaSnackBar(context,
-                                categoria: 'adiconado_carrinho',
-                                icon: Icons.check_circle_outline_outlined);
+                            buildMinhaSnackBar(
+                              context,
+                              categoria: 'adiconado_carrinho',
+                            );
 
                             setState(() {
                               statusCorresp = 9;

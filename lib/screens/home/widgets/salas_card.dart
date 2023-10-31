@@ -19,9 +19,7 @@ class CardSalas extends StatefulWidget {
 }
 
 lauchWhatsapp({String linkBit = ''}) async {
-  final zapzap = Uri.parse(linkBit);
-  await launchUrl(Uri.parse(zapzap.toString()),
-      mode: LaunchMode.externalApplication);
+  await launchUrl(Uri.parse(linkBit), mode: LaunchMode.externalApplication);
 }
 
 class _CardSalasState extends State<CardSalas> {

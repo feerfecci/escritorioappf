@@ -14,8 +14,10 @@ class ListaDuvidas extends StatelessWidget {
 
   snackBarShow(context) {
     ScaffoldMessenger.of(context).clearSnackBars();
-    return buildMinhaSnackBar(context,
-        categoria: 'avaliacao', icon: Icons.check_circle_outline_outlined);
+    return buildMinhaSnackBar(
+      context,
+      categoria: 'avaliacao',
+    );
   }
 
   pegaDuvidas() async {

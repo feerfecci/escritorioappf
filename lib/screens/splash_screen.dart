@@ -19,22 +19,20 @@ class SplashScreenState extends State<SplashScreen> {
   startLogin() {
     prefService.readChache().then((value) async {
       Map<String, dynamic> infos = value;
-      if (infos.values.first == null || infos.values.last == null) {
+      if (infos['email'] == null || infos['senha'] == null) {
         logado.navigatorRoute(context, LoginScreen());
-      } else if (infos.values.first != null || infos.values.last != null) {
+      } else if (infos['email'] != null || infos['senha'] != null) {
         Future authentic() async {
           final auth = await LocalAuthApi.authenticate();
           final hasBiometrics = await LocalAuthApi.hasBiometrics();
           if (hasBiometrics) {
             if (auth) {
-              return efetuaLogin(
-                  context, infos.values.first, infos.values.last, '');
+              return efetuaLogin(context, infos['email'], infos['senha'], '');
             } else {
               false;
             }
           } else {
-            return efetuaLogin(
-                context, infos.values.first, infos.values.last, '');
+            return efetuaLogin(context, infos['email'], infos['senha'], '');
           }
         }
 

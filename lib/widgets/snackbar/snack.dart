@@ -4,8 +4,7 @@ import 'package:escritorioappf/logado.dart' as logado;
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-buildMinhaSnackBar(BuildContext context,
-    {IconData icon = Icons.error_outline, required String categoria}) {
+buildMinhaSnackBar(BuildContext context, {required String categoria}) {
   ScaffoldMessenger.of(context).clearSnackBars();
   var size = MediaQuery.of(context).size;
   apiAvisos() async {
@@ -21,7 +20,7 @@ buildMinhaSnackBar(BuildContext context,
   Widget buildCorpoSnack(double width) {
     return Row(
       children: [
-        Icon(icon, color: Colors.white),
+        Icon(Icons.error_outline, color: Colors.white),
         SizedBox(
           width: size.width * width,
         ),
