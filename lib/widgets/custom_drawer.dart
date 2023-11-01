@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
+import '../../Consts/consts_widget.dart';
 import '../repository/theme_provider.dart';
 import '../screens/politica_privacidade/politica_privacidade.dart';
 import '../repository/shared_preferences.dart';
@@ -116,7 +118,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 padding: EdgeInsets.symmetric(
                     horizontal: size.width * 0.05,
                     vertical: size.height * 0.02),
-                child: logado.buildCustomButton(
+                child: ConstsWidget.buildCustomButton(
                   context,
                   "Sair",
                   onPressed: () {

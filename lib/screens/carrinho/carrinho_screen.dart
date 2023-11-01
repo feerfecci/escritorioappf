@@ -13,6 +13,8 @@ import 'widgets/lista_carrinho.dart';
 import '../../widgets/custom_drawer.dart';
 import '../../itens_bottom.dart';
 import '../../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
+import '../../Consts/consts_widget.dart';
 import 'widgets/lista_carrinho.dart' as carrinho;
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -102,7 +104,7 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
                       padding: EdgeInsets.symmetric(
                           horizontal: size.width * paddingWidth,
                           vertical: size.height * paddingHeight),
-                      child: logado.buildCustomButton(
+                      child: ConstsWidget.buildCustomButton(
                         context,
                         onPressed: () {
                           showCustomModalBottom(
@@ -122,7 +124,7 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
                     children: [
                       ListaCarrinho(),
                       valorCarrinho != 0
-                          ? logado.buildLayout(
+                          ? ConstsWidget.buildLayout(
                               context,
                               seMobile: buildCarrinhoScreen(0.02, 0.01),
                               seWeb: buildCarrinhoScreen(0.19, 0.01),

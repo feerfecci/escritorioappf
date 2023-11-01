@@ -6,7 +6,9 @@ import 'package:escritorioappf/widgets/shimmer_widget.dart';
 import 'package:escritorioappf/widgets/snackbar/snack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import '../../../Consts/consts_widget.dart';
 import '../../../logado.dart' as logado;
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../../../widgets/erro_servidor.dart';
@@ -201,7 +203,7 @@ class _AlertDialogSolicitacaoState extends State<AlertDialogSolicitacao> {
             );
           }
 
-          return logado.buildLayout(
+          return ConstsWidget.buildLayout(
             context,
             seMobile: buildContentSolicitacao(
                 paddingAlertHorizontal: 0.05,

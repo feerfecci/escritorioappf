@@ -6,6 +6,7 @@ import '../../widgets/erro_servidor.dart';
 import '../../widgets/progress_indicator.dart';
 import 'carrinho_screen.dart';
 import '../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
 
 class GerandoFatura extends StatefulWidget {
   const GerandoFatura({super.key});
@@ -58,7 +59,7 @@ class _GerandoFaturaState extends State<GerandoFatura> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text('Total: '),
-                      logado.buildTextTitle('$total')
+                      ConstsWidget.buildTextTitle('$total')
                     ],
                   ),
                 ),
@@ -71,7 +72,7 @@ class _GerandoFaturaState extends State<GerandoFatura> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
-                  child: logado.buildCustomButton(
+                  child: ConstsWidget.buildCustomButton(
                     context,
                     'Copiar Código Pix',
                     icon: Icons.content_copy_outlined,

@@ -11,6 +11,7 @@ import 'widgets/custom_drawer.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import '../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
 
 // ignore: must_be_immutable
 class ItensBottom extends StatefulWidget {
@@ -111,7 +112,7 @@ class _ItensBottomState extends State<ItensBottom> {
         endDrawer: CustomDrawer(
           fundo: '${logado.fundoAssets}principal.jpg',
         ),
-        bottomNavigationBar: logado.buildLayout(
+        bottomNavigationBar: ConstsWidget.buildLayout(
           context,
           seMobile: buildItensBottons(0.035),
           seWeb: buildItensBottons(0.03),
@@ -119,7 +120,7 @@ class _ItensBottomState extends State<ItensBottom> {
         body: Stack(
           children: [
             FundoScreen('${logado.fundoAssets}principal.jpg'),
-            logado.buildLayout(context,
+            ConstsWidget.buildLayout(context,
                 seMobile: NestedScrollView(
                   headerSliverBuilder:
                       (BuildContext context, bool innerBoxIsScrolled) {

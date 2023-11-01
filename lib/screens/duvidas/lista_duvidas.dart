@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:html_unescape/html_unescape.dart';
 import 'dart:convert';
 import '../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
 import '../../widgets/erro_servidor.dart';
 
 class ListaDuvidas extends StatelessWidget {
@@ -88,7 +89,7 @@ class ListaDuvidas extends StatelessWidget {
                         data: Theme.of(context)
                             .copyWith(dividerColor: Colors.transparent),
                         child: ExpansionTile(
-                          title: logado.buildTextTitle(
+                          title: ConstsWidget.buildTextTitle(
                             duvida['pergunta'],
                           ),
                           children: [
@@ -118,7 +119,7 @@ class ListaDuvidas extends StatelessWidget {
                 }
 
                 return MeuBoxShadow(
-                  child: logado.buildLayout(context,
+                  child: ConstsWidget.buildLayout(context,
                       seMobile: buildDuvidasListTile(0.94),
                       seWeb: buildDuvidasListTile(0.65)),
                 );

@@ -10,6 +10,7 @@ import 'package:flutter_app_version_checker/flutter_app_version_checker.dart';
 import 'package:validatorless/validatorless.dart';
 import '../../logado.dart';
 import '../../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
 import '../../widgets/custom_drawer.dart';
 import 'esqueceu_senha.dart';
 
@@ -206,7 +207,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               )
-            : logado.buildLayout(
+            : ConstsWidget.buildLayout(
                 context,
                 seMobile: buildLoading(0.020, 0.05),
                 seWeb: buildLoading(0.03, 0.02),
@@ -274,7 +275,7 @@ class _LoginScreenState extends State<LoginScreen> {
         key: formKey,
         child: Scaffold(
           body: Center(
-            child: logado.buildLayout(
+            child: ConstsWidget.buildLayout(
               context,
               seMobile: Wrap(
                 children: [

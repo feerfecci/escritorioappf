@@ -4,6 +4,8 @@ import 'package:escritorioappf/logado.dart' as logado;
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../../Consts/consts_widget.dart';
+
 buildMinhaSnackBar(BuildContext context, {required String categoria}) {
   ScaffoldMessenger.of(context).clearSnackBars();
   var size = MediaQuery.of(context).size;
@@ -50,10 +52,10 @@ buildMinhaSnackBar(BuildContext context, {required String categoria}) {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  logado.buildTextTitle(titulo, color: Colors.white
+                  ConstsWidget.buildTextTitle(titulo, color: Colors.white
                       // color: Theme.of(context).snackBarTheme.actionTextColor,
                       ),
-                  logado.buildTextSubTitle(texto, color: Colors.white
+                  ConstsWidget.buildTextSubTitle(texto, color: Colors.white
                       // color: Theme.of(context).snackBarTheme.actionTextColor,
                       ),
                 ],
@@ -87,7 +89,7 @@ buildMinhaSnackBar(BuildContext context, {required String categoria}) {
         duration: Duration(seconds: 4),
         backgroundColor: Colors.blue,
         behavior: SnackBarBehavior.floating,
-        content: logado.buildLayout(
+        content: ConstsWidget.buildLayout(
           context,
           seMobile: buildCorpoSnack(0.03),
           seWeb: buildCorpoSnack(0.05),

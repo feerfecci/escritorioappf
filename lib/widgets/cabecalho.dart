@@ -2,6 +2,8 @@ import 'package:escritorioappf/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:escritorioappf/logado.dart' as logado;
 
+import '../Consts/consts_widget.dart';
+
 Widget Cabecalho(
     {double subTitleFontSize = 18,
     double tileFontSize = 34,
@@ -47,7 +49,7 @@ Widget Cabecalho(
               ],
             ),
           ),
-          logado.buildLayout(context,
+          ConstsWidget.buildLayout(context,
               seMobile: ListView(
                 shrinkWrap: true,
                 physics: ClampingScrollPhysics(),

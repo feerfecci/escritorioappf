@@ -11,6 +11,7 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
 import '../../widgets/erro_servidor.dart';
 import '../../widgets/shimmer_widget.dart';
 import '/screens/notificacoes/lista_notificacao.dart' as notific;
@@ -131,7 +132,7 @@ class _ListaNotificacaoState extends State<ListaNotificacao> {
                                     mudaStatus(notif[index]['id']);
                                     notificLidas == 1;
                                   },
-                                  title: logado.buildTextTitle(
+                                  title: ConstsWidget.buildTextTitle(
                                     unescape.convert(notif[index]['titulo']),
                                   ),
                                   children: [
@@ -153,7 +154,8 @@ class _ListaNotificacaoState extends State<ListaNotificacao> {
                                             padding: EdgeInsets.symmetric(
                                                 vertical: size.height * 0.01,
                                                 horizontal: size.width * 0.020),
-                                            child: logado.buildTextSubTitle(
+                                            child:
+                                                ConstsWidget.buildTextSubTitle(
                                               DateFormat('HH:mm • dd/MM/yyyy')
                                                   .format(
                                                 DateTime.parse(datahora),
@@ -174,7 +176,7 @@ class _ListaNotificacaoState extends State<ListaNotificacao> {
                   }
 
                   return MeuBoxShadow(
-                    child: logado.buildLayout(context,
+                    child: ConstsWidget.buildLayout(context,
                         seMobile: buildNotificationTile(0.93),
                         seWeb: buildNotificationTile(0.65)),
                   );

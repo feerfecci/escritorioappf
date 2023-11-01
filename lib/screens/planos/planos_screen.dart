@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import '../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
 import '../../widgets/alert_dialogs/alert_vazio.dart';
 import '../../widgets/erro_servidor.dart';
 import '../../widgets/shimmer_widget.dart';
@@ -37,7 +38,7 @@ Widget buildListItens(String title, String subTitle) {
     padding: EdgeInsets.symmetric(vertical: 4),
     child: Row(
       children: [
-        logado.buildTextTitle(title),
+        ConstsWidget.buildTextTitle(title),
         Text(subTitle),
       ],
     ),
@@ -152,8 +153,8 @@ class _PlanosScreenState extends State<PlanosScreen> {
                                   children: [
                                     Row(
                                       children: [
-                                        logado.buildTextTitle('Status: '),
-                                        logado.buildTextTitle(
+                                        ConstsWidget.buildTextTitle('Status: '),
+                                        ConstsWidget.buildTextTitle(
                                           ' ${status != true ? 'Ativa' : 'Suspensa'}',
                                           color: status != true
                                               ? Colors.green
@@ -166,7 +167,8 @@ class _PlanosScreenState extends State<PlanosScreen> {
                                         '${formatDate(comecaEm)}'),
                                     buildListItens('Data de expiração: ',
                                         '${formatDate(expiraEm)}'),
-                                    logado.buildTextTitle('ID Assinatura: '),
+                                    ConstsWidget.buildTextTitle(
+                                        'ID Assinatura: '),
                                     Text('${items['id']}'),
                                   ],
                                 ),

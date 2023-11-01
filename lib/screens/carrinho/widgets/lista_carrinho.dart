@@ -6,7 +6,9 @@ import 'package:escritorioappf/widgets/box_shadow.dart';
 import 'package:escritorioappf/widgets/erro_servidor.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../../../Consts/consts_widget.dart';
 import '../../../logado.dart' as logado;
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -131,13 +133,13 @@ class _ListCarrinhoState extends State<ListaCarrinho> {
                           EdgeInsets.symmetric(vertical: size.height * 0.005),
                       child: Row(
                         children: [
-                          logado.buildTextTitle('$titulo: '),
-                          logado.buildTextSubTitle('$conteudo')
+                          ConstsWidget.buildTextTitle('$titulo: '),
+                          ConstsWidget.buildTextSubTitle('$conteudo')
                         ],
                       ));
                 }
 
-                return logado.buildLayout(
+                return ConstsWidget.buildLayout(
                   context,
                   seMobile: MeuBoxShadow(
                     child: Padding(
@@ -152,10 +154,10 @@ class _ListCarrinhoState extends State<ListaCarrinho> {
                             children: [
                               SizedBox(
                                 width: size.width * 0.77,
-                                child: logado.buildTextTitle(remetente),
+                                child: ConstsWidget.buildTextTitle(remetente),
                               ),
-                              logado.buildTextSubTitle(descricao),
-                              logado.buildTextSubTitle(dataCorresp),
+                              ConstsWidget.buildTextSubTitle(descricao),
+                              ConstsWidget.buildTextSubTitle(dataCorresp),
                               Padding(
                                 padding: EdgeInsets.symmetric(
                                     vertical: size.height * 0.01),
@@ -200,9 +202,9 @@ class _ListCarrinhoState extends State<ListaCarrinho> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                logado.buildTextTitle('remetente'),
-                                logado.buildTextSubTitle(descricao),
-                                logado.buildTextSubTitle(dataCorresp),
+                                ConstsWidget.buildTextTitle('remetente'),
+                                ConstsWidget.buildTextSubTitle(descricao),
+                                ConstsWidget.buildTextSubTitle(dataCorresp),
                                 Padding(
                                   padding: EdgeInsets.symmetric(
                                       vertical: size.height * 0.01),

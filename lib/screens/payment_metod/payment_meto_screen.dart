@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import '../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
 import '../../widgets/alert_dialogs/alert_vazio.dart';
 import '../../widgets/erro_servidor.dart';
 import '../../widgets/shimmer_widget.dart';
@@ -38,8 +39,8 @@ Widget buildInfosPay(BuildContext context,
     padding: EdgeInsets.symmetric(vertical: size.height * 0.005),
     child: Row(
       children: [
-        logado.buildTextTitle('$titulo: '),
-        logado.buildTextSubTitle(conteudo)
+        ConstsWidget.buildTextTitle('$titulo: '),
+        ConstsWidget.buildTextSubTitle(conteudo)
       ],
     ),
   );

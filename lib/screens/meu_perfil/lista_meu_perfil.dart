@@ -7,6 +7,7 @@ import 'package:escritorioappf/widgets/snackbar/snack.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
 import 'package:http/http.dart' as http;
 import 'package:validatorless/validatorless.dart';
 import '../../widgets/shimmer_widget.dart';
@@ -217,7 +218,7 @@ class ListaMeuPerfilState extends State<ListaMeuPerfil> {
               ),
             );
 
-            // logado.buildLayout(
+            // ConstsWidget.buildLayout(
             //   context,
             //   seMobile: Padding(
             //     padding: EdgeInsets.symmetric(vertical: size.height * 0.006),
@@ -766,7 +767,7 @@ class ListaMeuPerfilState extends State<ListaMeuPerfil> {
                         Padding(
                           padding: EdgeInsets.symmetric(
                               vertical: size.height * 0.01),
-                          child: logado.buildCustomButton(
+                          child: ConstsWidget.buildCustomButton(
                               context, 'Trocar minha senha de acesso',
                               onPressed: () {
                             alertaSenha(context);
@@ -780,7 +781,7 @@ class ListaMeuPerfilState extends State<ListaMeuPerfil> {
                     height: size.height * 0.008,
                   ),
                   Center(
-                    child: logado.buildCustomButton(context, 'Salvar',
+                    child: ConstsWidget.buildCustomButton(context, 'Salvar',
                         icon: Icons.save_alt_sharp, onPressed: () {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();

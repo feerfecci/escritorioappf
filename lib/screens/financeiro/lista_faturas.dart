@@ -11,6 +11,7 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
 import '../../widgets/erro_servidor.dart';
 
 faturaApiCliente() async {
@@ -75,7 +76,7 @@ copiaButton(var fatId) {
                     var boleto = snapshot.data!['bank_slip'];
 
                     Widget _buildPixButton() {
-                      return logado.buildCustomButton(
+                      return ConstsWidget.buildCustomButton(
                         context,
                         'Copiar código pix',
                         onPressed: () async {
@@ -94,7 +95,7 @@ copiaButton(var fatId) {
                     }
 
                     Widget _buildBoletoButton() {
-                      return logado.buildCustomButton(
+                      return ConstsWidget.buildCustomButton(
                         context,
                         snapshot.data!['bank_slip']['digitable_line'],
                         onPressed: () {
@@ -212,15 +213,15 @@ showFaturas() {
                         var descri = usuario2["items"][index]["description"];
                         return SizedBox(
                           width: size.width * 0.84,
-                          child: logado.buildTextTitle(descri),
+                          child: ConstsWidget.buildTextTitle(descri),
                         );
                       }),
                     ),
                     Padding(
                       padding:
                           EdgeInsets.symmetric(vertical: size.height * 0.006),
-                      child:
-                          logado.buildTextSubTitle('Vencimento: $parsedDate'),
+                      child: ConstsWidget.buildTextSubTitle(
+                          'Vencimento: $parsedDate'),
                     ),
                     Padding(
                       padding:
@@ -237,7 +238,7 @@ showFaturas() {
                       padding:
                           EdgeInsets.symmetric(vertical: size.height * 0.006),
                       child: Center(
-                          child: logado.buildCustomButton(
+                          child: ConstsWidget.buildCustomButton(
                         context,
                         usuario[index]["status"] == "canceled"
                             ? 'Ver fatura Cancelada'
@@ -260,8 +261,8 @@ showFaturas() {
                       )),
                     ),
                     usuario[index]["status"] == "pending"
-                        ? logado.buildCustomButton(context, 'Fazer Pagamento',
-                            onPressed: () {
+                        ? ConstsWidget.buildCustomButton(
+                            context, 'Fazer Pagamento', onPressed: () {
                             showCustomModalBottom(
                                 context,
                                 isDismissible: true,
@@ -273,13 +274,13 @@ showFaturas() {
                                       Padding(
                                         padding: EdgeInsets.symmetric(
                                             vertical: size.height * 0.01),
-                                        child: logado.buildTextTitle(
+                                        child: ConstsWidget.buildTextTitle(
                                             'Escolha a forma de pagamento'),
                                       ),
                                       Padding(
                                         padding: EdgeInsets.symmetric(
                                             vertical: size.height * 0.006),
-                                        child: logado.buildTextSubTitle(
+                                        child: ConstsWidget.buildTextSubTitle(
                                             'Vencimento: $parsedDate'),
                                       ),
                                       copiaButton(idFatura)

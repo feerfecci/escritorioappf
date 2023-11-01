@@ -3,6 +3,8 @@ import 'package:http/http.dart' as http;
 import 'package:email_validator/email_validator.dart';
 import 'package:escritorioappf/widgets/snackbar/snack.dart';
 import '../../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
+import '../../Consts/consts_widget.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
@@ -72,7 +74,7 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha>
     Widget buildBotaoRecuperar() {
       return Padding(
           padding: EdgeInsets.all(8),
-          child: logado.buildCustomButton(
+          child: ConstsWidget.buildCustomButton(
             context,
             'Recuperar Senha',
             onPressed: () {
@@ -160,7 +162,7 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha>
                       vertical: size.height * 0.020),
                   child: Form(
                     key: formKey,
-                    child: logado.buildLayout(context,
+                    child: ConstsWidget.buildLayout(context,
                         seMobile: builEmailRecuperar(0.05),
                         seWeb: builEmailRecuperar(0.0001)),
                   ),
@@ -177,7 +179,7 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha>
     return Scaffold(
       body: SafeArea(
         child: Center(
-            child: logado.buildLayout(
+            child: ConstsWidget.buildLayout(
           context,
           seMobile: buildTelaRecuperar(0.04),
           seWeb: buildTelaRecuperar(0.3),

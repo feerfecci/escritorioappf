@@ -13,6 +13,7 @@ import '../financeiro/financeiro_screen.dart';
 import '../notificacoes/lista_notificacao.dart';
 import '../notificacoes/notificacao_screen.dart';
 import '../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
 import 'package:http/http.dart' as http;
 
 import 'widgets/salas_card.dart';
@@ -203,7 +204,7 @@ class _HomePrincipalState extends State<HomePrincipal> {
             subtitleWight: FontWeight.w900,
             subTitleFontSize: 32,
           ),
-          logado.buildLayout(
+          ConstsWidget.buildLayout(
             context,
             seMobile: Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
@@ -218,7 +219,7 @@ class _HomePrincipalState extends State<HomePrincipal> {
                   crossAxisCount: 4, childAspectRatio: 2, crossAxisSpacing: 20),
             ),
           ),
-          logado.buildLayout(
+          ConstsWidget.buildLayout(
             context,
             seMobile: buildCardAluguel(pedding: 0.02),
             seWeb: buildCardAluguel(pedding: 0.12),

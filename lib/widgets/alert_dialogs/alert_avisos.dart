@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import '../../Consts/consts_widget.dart';
 import 'alert_vazio.dart';
 import '../erro_servidor.dart';
 import '../progress_indicator.dart';
@@ -41,23 +42,23 @@ alertaDialogAviso(BuildContext context) {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(13),
             ),
-            title: logado.buildTextTitle('$titulo'),
+            title: ConstsWidget.buildTextTitle('$titulo'),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  child: logado.buildTextSubTitle(subtitulo),
+                  child: ConstsWidget.buildTextSubTitle(subtitulo),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: size.height * 0.01),
                   child: Container(
-                    child: logado.buildTextSubTitle(texto),
+                    child: ConstsWidget.buildTextSubTitle(texto),
                   ),
                 ),
               ],
             ),
             actions: [
-              logado.buildCustomButton(context, 'Fechar', onPressed: () {
+              ConstsWidget.buildCustomButton(context, 'Fechar', onPressed: () {
                 Navigator.pop(context);
               })
             ],

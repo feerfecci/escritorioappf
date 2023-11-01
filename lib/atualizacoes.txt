@@ -30,7 +30,7 @@
     Shimmer em telas e cards para loading de API
     cor snack bar para Azul;
     atualizado "Anotei o protocolo" para "Anotarei o protocolo"
-    TextButton para logado.buildCustomButton quando falta arquivo de corresp
+    TextButton para ConstsWidget.buildCustomButton quando falta arquivo de corresp
 
 1.0.14
-    separei o botão do trocar login. (logado.buildCustomButton para ElevatedButton)
+    separei o botão do trocar login. (ConstsWidget.buildCustomButton para ElevatedButton)

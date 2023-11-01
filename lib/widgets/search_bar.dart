@@ -2,6 +2,7 @@ import 'package:escritorioappf/widgets/alert_dialogs/alert_trocar_login.dart';
 import 'package:escritorioappf/widgets/snackbar/snack.dart';
 import 'package:flutter/material.dart';
 import '../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
 
 // alertaTrocarUsuario(
 //   BuildContext context,
@@ -71,7 +72,7 @@ class SearchBar extends StatelessWidget {
                 alertaDialogTrocarLogin(context);
                 // alertaTrocarUsuario(context);
               },
-        child: logado.buildLayout(
+        child: ConstsWidget.buildLayout(
           context,
           seMobile: Container(
             height: size.height * 0.05,

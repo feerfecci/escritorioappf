@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import '../../Consts/consts_widget.dart';
 import '/logado.dart' as logado;
 import 'package:url_launcher/url_launcher.dart';
 
@@ -41,7 +42,7 @@ alertDialogUpdate(BuildContext context) {
                 ),
               ),
               actions: [
-                logado.buildCustomButton(
+                ConstsWidget.buildCustomButton(
                   context,
                   'Atualize na sua loja de aplicativo',
                   onPressed: () {

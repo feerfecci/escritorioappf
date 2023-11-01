@@ -13,6 +13,7 @@ import 'package:http/http.dart' as http;
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
 import '../../widgets/custom_drawer.dart';
 import '../../widgets/erro_servidor.dart';
 import '../financeiro/financeiro_screen.dart';
@@ -275,10 +276,10 @@ class _ListaCorrespState extends State<ListaCorresp> {
                                     top: size.height * paddingProt),
                                 child: Row(
                                   children: [
-                                    logado.buildTextSubTitle(
+                                    ConstsWidget.buildTextSubTitle(
                                       'Retirado por: ',
                                     ),
-                                    logado.buildTextTitle(nome_portador),
+                                    ConstsWidget.buildTextTitle(nome_portador),
                                   ],
                                 ),
                               )
@@ -287,8 +288,10 @@ class _ListaCorrespState extends State<ListaCorresp> {
                                     top: size.height * paddingProt),
                                 child: Row(
                                   children: [
-                                    logado.buildTextSubTitle('Protocolo: '),
-                                    logado.buildTextTitle(idCorresp.toString()),
+                                    ConstsWidget.buildTextSubTitle(
+                                        'Protocolo: '),
+                                    ConstsWidget.buildTextTitle(
+                                        idCorresp.toString()),
                                   ],
                                 ),
                               )
@@ -296,7 +299,7 @@ class _ListaCorrespState extends State<ListaCorresp> {
                     );
                   }
 
-                  return logado.buildLayout(context,
+                  return ConstsWidget.buildLayout(context,
                       seMobile: buildEtapasRetirada(0.25, 0.015),
                       seWeb: buildEtapasRetirada(0.1, 0.015));
                 } else if (statusCorresp == 2 ||
@@ -304,7 +307,7 @@ class _ListaCorrespState extends State<ListaCorresp> {
                     statusCorresp == 8 ||
                     statusCorresp == 9 ||
                     statusCorresp == 10) {
-                  return logado.buildLayout(context,
+                  return ConstsWidget.buildLayout(context,
                       seMobile: Padding(
                         padding:
                             EdgeInsets.symmetric(horizontal: size.width * 0.05),
@@ -364,7 +367,7 @@ class _ListaCorrespState extends State<ListaCorresp> {
                   case 3:
                     if (codRastreio != "") {
                       return Center(
-                        child: logado.buildCustomButton(
+                        child: ConstsWidget.buildCustomButton(
                           context,
                           codRastreio,
                           icon: Icons.search_outlined,
@@ -398,7 +401,7 @@ class _ListaCorrespState extends State<ListaCorresp> {
                               },
                               child: Column(
                                 children: [
-                                  logado.buildTextTitle(
+                                  ConstsWidget.buildTextTitle(
                                       correspApi['arquivos']['items'][index]
                                           ['nome_arquivo'],
                                       color: Theme.of(context).iconTheme.color),
@@ -409,7 +412,7 @@ class _ListaCorrespState extends State<ListaCorresp> {
                             );
                           }));
                     }
-                    return logado.buildCustomButton(
+                    return ConstsWidget.buildCustomButton(
                         context, 'Faltou algo, nos comunique', onPressed: () {
                       launchWhatsAppSuporte();
                     }, icon: Icons.phone);
@@ -455,7 +458,7 @@ class _ListaCorrespState extends State<ListaCorresp> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              logado.buildTextTitle('Total: $valor_total',
+                              ConstsWidget.buildTextTitle('Total: $valor_total',
                                   color: Colors.white),
                               SizedBox(
                                 width: size.width * 0.015,
@@ -471,7 +474,7 @@ class _ListaCorrespState extends State<ListaCorresp> {
 
                       return Center(
                           child: StatefulBuilder(builder: (context, setState) {
-                        return logado.buildLayout(context,
+                        return ConstsWidget.buildLayout(context,
                             seMobile: buildRoudend(0.065),
                             seWeb: buildRoudend(0.09));
                       }));
@@ -493,10 +496,10 @@ class _ListaCorrespState extends State<ListaCorresp> {
                       padding:
                           EdgeInsets.symmetric(vertical: size.height * 0.01),
                       child: Center(
-                          child: logado.buildTextTitle(
+                          child: ConstsWidget.buildTextTitle(
                               'Confira seu carrinho no menu inicial')
 
-                          //     logado.buildCustomButton(
+                          //     ConstsWidget.buildCustomButton(
                           //   context,
                           //   ,
                           //   icon: Icons.remove_red_eye_rounded,
@@ -512,7 +515,7 @@ class _ListaCorrespState extends State<ListaCorresp> {
                   //Na fatura
                   case 10:
                     return Center(
-                      child: logado.buildCustomButton(
+                      child: ConstsWidget.buildCustomButton(
                         context,
                         'Confira o Financeiro',
                         icon: Icons.payments_rounded,
@@ -540,17 +543,17 @@ class _ListaCorrespState extends State<ListaCorresp> {
                           Padding(
                             padding: EdgeInsets.symmetric(
                                 vertical: size.height * 0.006),
-                            child: logado.buildTextTitle(
+                            child: ConstsWidget.buildTextTitle(
                                 snapshot.data['correspondencias'][index]
                                     ['remetente']['nome_remetente']),
                           ),
                           Row(
                             children: [
-                              logado.buildTextSubTitle(
+                              ConstsWidget.buildTextSubTitle(
                                 snapshot.data['correspondencias'][index]
                                     ['descricao'],
                               ),
-                              logado.buildTextSubTitle(' - $dataCorres'),
+                              ConstsWidget.buildTextSubTitle(' - $dataCorres'),
                             ],
                           ),
                           Container(

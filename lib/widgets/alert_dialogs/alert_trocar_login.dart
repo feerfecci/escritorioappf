@@ -111,7 +111,7 @@ alertaDialogTrocarLogin(BuildContext context) {
                         ),
                       )
 
-                      //  logado.buildCustomButton(
+                      //  ConstsWidget.buildCustomButton(
                       //     context, tipo == 'CPF' ? '$nomePF' : '$nomePJ',
                       //     onPressed: () {
                       //   efetuaLogin(context, logado.emailUser, logado.senhaUser,

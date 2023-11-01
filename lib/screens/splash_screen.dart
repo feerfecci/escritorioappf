@@ -6,6 +6,7 @@ import 'package:escritorioappf/repository/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import '../repository/biometric_data.dart';
 import '../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -68,7 +69,7 @@ class SplashScreenState extends State<SplashScreen> {
           Padding(
             padding: EdgeInsets.symmetric(
                 vertical: size.height * 0.03, horizontal: size.width * 0.03),
-            child: logado.buildCustomButton(
+            child: ConstsWidget.buildCustomButton(
               context,
               'Autenticar Biometria',
               icon: Icons.lock_open_outlined,

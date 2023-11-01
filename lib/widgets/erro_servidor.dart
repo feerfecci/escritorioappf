@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:escritorioappf/logado.dart' as logado;
 
+import '../Consts/consts_widget.dart';
+
 class ErroServidor extends StatefulWidget {
   const ErroServidor({super.key});
 
@@ -31,7 +33,7 @@ class _ErroServidorState extends State<ErroServidor> {
 
     return Column(
       children: [
-        logado.buildLayout(context,
+        ConstsWidget.buildLayout(context,
             seMobile: Padding(
               padding: EdgeInsets.only(top: size.height * 0.02),
               child: buildErroServidorBody(),

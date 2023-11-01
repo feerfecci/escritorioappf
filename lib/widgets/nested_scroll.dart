@@ -1,6 +1,7 @@
 import 'package:escritorioappf/widgets/fundo_screen.dart';
 import 'package:flutter/material.dart';
 import '../../logado.dart' as logado;
+import '../../Consts/consts_widget.dart';
 
 Widget MeuNested({
   required String imageAsset,
@@ -35,7 +36,7 @@ Widget MeuNested({
     return Stack(
       children: [
         FundoScreen(imageAsset),
-        logado.buildLayout(context,
+        ConstsWidget.buildLayout(context,
             seMobile: buildNastedViews(52), seWeb: buildNastedViews(80)),
       ],
     );

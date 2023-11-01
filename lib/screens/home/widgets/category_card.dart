@@ -1,6 +1,7 @@
 import 'package:escritorioappf/widgets/box_shadow.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badge;
+import '../../../Consts/consts_widget.dart';
 import '../../../logado.dart' as logado;
 
 class CategoryCard extends StatefulWidget {
@@ -49,7 +50,7 @@ class _CategoryCardState extends State<CategoryCard> {
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
               ),
-              child: logado.buildLayout(
+              child: ConstsWidget.buildLayout(
                 context,
                 seMobile: SizedBox(
                     width: size.width * 0.15,
@@ -62,7 +63,7 @@ class _CategoryCardState extends State<CategoryCard> {
                 ),
               ),
             ),
-            logado.buildTextTitle(
+            ConstsWidget.buildTextTitle(
               widget.title,
             ),
           ],
