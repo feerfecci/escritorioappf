@@ -88,11 +88,12 @@ class _GerandoFaturaState extends State<GerandoFatura> {
                         context,
                         categoria: 'codigo_pix_copiado',
                       );
-
-                      logado.navigatorRoute(
-                          context, ItensBottom(currentTab: 0));
-                      setState(() {
-                        logado.bolinha = 0;
+                      ConstsFuture.navigatorRemoveUntil(
+                              context, ItensBottom(currentTab: 0))
+                          .whenComplete(() {
+                        setState(() {
+                          logado.bolinha == 0;
+                        });
                       });
                     },
                   ),

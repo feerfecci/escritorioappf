@@ -9,17 +9,18 @@ import '../../widgets/cabecalho.dart';
 import '../../widgets/erro_servidor.dart';
 import '../../widgets/progress_indicator.dart';
 import '../../widgets/shimmer_widget.dart';
-import 'widgets/lista_carrinho.dart';
+import 'widgets/lista_itens_carrinho.dart';
 import '../../widgets/custom_drawer.dart';
 import '../../itens_bottom.dart';
 import '../../../logado.dart' as logado;
 import '../../Consts/consts_widget.dart';
 import '../../Consts/consts_widget.dart';
-import 'widgets/lista_carrinho.dart' as carrinho;
+import 'widgets/lista_itens_carrinho.dart' as carrinho;
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class CarrinhoScreen extends StatefulWidget {
+  static String valorCarrinho = '';
   const CarrinhoScreen({super.key});
 
   @override
@@ -37,7 +38,6 @@ class CarrinhoScreen extends StatefulWidget {
 //   }
 // }
 
-var preco = carrinho.totalCarrinho;
 showCustomModalBottom(BuildContext context, child, {required isDismissible}) {
   showModalBottomSheet(
     enableDrag: false,
@@ -73,54 +73,55 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
 
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return LoadingCarinhho();
-                  } else if (snapshot.hasData == false || snapshot.hasError) {
-                    return ErroServidor();
-                  } else if (snapshot.data['mensagem'] != "") {
-                    return Padding(
-                      padding: const EdgeInsets.all(14),
-                      child: CampoVazio(
-                          mensagemAvisoVazio:
-                              'Carrinho vazio. Adicione uma correspondência aqui'),
-                    );
-                  }
+                  } else if (snapshot.hasData) {
+                    if (!snapshot.data['erro'] &&
+                        snapshot.data['mensagem'] == "") {
+                      CarrinhoScreen.valorCarrinho =
+                          snapshot.data!['valor_total_carrinho'];
+                      logado.bolinha = snapshot.data["carrinho"].length;
 
-                  var valorCarrinho = snapshot.data!['valor_total_carrinho'];
-                  logado.bolinha = snapshot.data["carrinho"].length;
-
-                  Widget buildCarrinhoScreen(
-                      double paddingWidth, double paddingHeight) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: size.width * paddingWidth,
-                          vertical: size.height * paddingHeight),
-                      child: ConstsWidget.buildCustomButton(
-                        context,
-                        onPressed: () {
-                          showCustomModalBottom(
+                      Widget buildCarrinhoScreen(double paddingWidth) {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: size.width * paddingWidth,
+                              vertical: size.height * 0.01),
+                          child: ConstsWidget.buildCustomButton(
                             context,
-                            isDismissible: false,
-                            GerandoFatura(),
-                          );
-                        },
-                        'Gerar Fatura de $valorCarrinho',
-                      ),
-                    );
-                  }
+                            onPressed: () {
+                              showCustomModalBottom(
+                                context,
+                                isDismissible: false,
+                                GerandoFatura(),
+                              );
+                            },
+                            'Gerar Fatura de ${CarrinhoScreen.valorCarrinho}',
+                          ),
+                        );
+                      }
 
-                  return ListView(
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    children: [
-                      ListaCarrinho(),
-                      valorCarrinho != 0
-                          ? ConstsWidget.buildLayout(
-                              context,
-                              seMobile: buildCarrinhoScreen(0.02, 0.01),
-                              seWeb: buildCarrinhoScreen(0.19, 0.01),
-                            )
-                          : Container()
-                    ],
-                  );
+                      return ListView(
+                        shrinkWrap: true,
+                        physics: ClampingScrollPhysics(),
+                        children: [
+                          ListaItensCarrinho(),
+                          ConstsWidget.buildLayout(
+                            context,
+                            seMobile: buildCarrinhoScreen(0.02),
+                            seWeb: buildCarrinhoScreen(0.19),
+                          )
+                        ],
+                      );
+                    } else {
+                      return Padding(
+                        padding: const EdgeInsets.all(14),
+                        child: CampoVazio(
+                            mensagemAvisoVazio:
+                                'Carrinho vazio. Adicione uma correspondência aqui'),
+                      );
+                    }
+                  } else {
+                    return ErroServidor();
+                  }
                 },
               ),
             ),

@@ -423,6 +423,10 @@ class _ListaCorrespState extends State<ListaCorresp> {
                                 setState(() {
                                   statusCorresp == 9;
                                 });
+                                buildMinhaSnackBar(
+                                  context,
+                                  categoria: 'adiconado_carrinho',
+                                );
                               } else {
                                 buildMinhaSnackBar(
                                   context,
@@ -481,11 +485,7 @@ class _ListaCorrespState extends State<ListaCorresp> {
                           'Confira seu carrinho aqui',
                           onPressed: () {
                             ConstsFuture.navigatorPageRoute(
-                                    context, ItensBottom(currentTab: 1))
-                                .then((value) => buildMinhaSnackBar(
-                                      context,
-                                      categoria: 'adiconado_carrinho',
-                                    ));
+                                context, ItensBottom(currentTab: 1));
                           },
                         ),
 
@@ -507,7 +507,7 @@ class _ListaCorrespState extends State<ListaCorresp> {
                     return Center(
                       child: ConstsWidget.buildCustomButton(
                         context,
-                        'Confira o Financeiro',
+                        'Confira as Faturas',
                         icon: Icons.payments_rounded,
                         onPressed: () {
                           logado.navigatorRoute(context, FinanceiroScreen());

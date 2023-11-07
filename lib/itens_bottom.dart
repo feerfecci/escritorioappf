@@ -1,7 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages, unnecessary_string_interpolations
 
 import 'package:badges/badges.dart' as badge;
-import 'package:escritorioappf/screens/carrinho/widgets/lista_carrinho.dart';
+import 'package:escritorioappf/screens/carrinho/widgets/lista_itens_carrinho.dart';
 import 'package:escritorioappf/widgets/fundo_screen.dart';
 import 'package:flutter/material.dart';
 import 'screens/carrinho/carrinho_screen.dart';

@@ -20,6 +20,15 @@ class ConstsFuture {
     ));
   }
 
+  static Future navigatorRemoveUntil(BuildContext context, Widget route) {
+    return Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) => route,
+        ),
+        (route) => false);
+  }
+
   static Future<dynamic> restApi(String api) async {
     var url = Uri.parse("${Consts.comecoAPI}$api");
     var resposta = await http.get(url);

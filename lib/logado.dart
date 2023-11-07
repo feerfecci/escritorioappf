@@ -194,7 +194,6 @@ efetuaLogin(context, String email, String senha, String codigoCliente,
       emailUser = email;
       senhaUser = senha;
       periodo = parteLogin['ultimo_login'];
-
       razaoSocial = parteLogin['razao_social'];
       codigo = parteLogin['codigo'];
       idCliente = parteLogin['id'];
@@ -203,8 +202,16 @@ efetuaLogin(context, String email, String senha, String codigoCliente,
       nomeSaudacao = parteLogin["nome_saudacao"];
       creditoCliente = parteLogin['credito'];
       statusCliente = parteLogin['financeiro']['aviso'];
-
-      navigatorRoute(context, ItensBottom(currentTab: 0));
+      if (codigoCliente == '') {
+        navigatorRoute(context, ItensBottom(currentTab: 0));
+      } else {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ItensBottom(currentTab: 0),
+            ),
+            (route) => false);
+      }
 
       verificarAvisos(context);
       if (senha == '123mudar') {

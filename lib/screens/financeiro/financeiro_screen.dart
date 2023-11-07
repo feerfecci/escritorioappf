@@ -36,11 +36,11 @@ class _FinanceiroScreenState extends State<FinanceiroScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Cabecalho(
-                        context: context,
-                        titulo: 'Financeiro',
-                        subTitulo: 'Fique por dentro das suas faturas',
-                        child: showFaturas(),
-                        ),
+                      context: context,
+                      titulo: 'Faturas',
+                      subTitulo: 'Fique por dentro das suas faturas',
+                      child: showFaturas(),
+                    ),
                   ],
                 )
               ],

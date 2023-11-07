@@ -111,7 +111,7 @@ Widget showFinanceiroCategory() {
 
         return CategoryCard(
           iconApi: '${logado.iconAssets}financeiro.png',
-          title: 'Financeiro',
+          title: 'Faturas',
           screen: FinanceiroScreen(),
           contagem: quantidadePendente,
           aparece: quantidadePendente == 0 || quantidadePendente == null

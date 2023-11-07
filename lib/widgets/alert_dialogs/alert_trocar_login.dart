@@ -88,7 +88,6 @@ alertaDialogTrocarLogin(BuildContext context) {
                         onPressed: () {
                           efetuaLogin(context, logado.emailUser,
                               logado.senhaUser, codigoId);
-                          ItensBottom(currentTab: 0);
                         },
                         child: Padding(
                           padding: EdgeInsets.symmetric(
@@ -109,16 +108,7 @@ alertaDialogTrocarLogin(BuildContext context) {
                             ),
                           ),
                         ),
-                      )
-
-                      //  ConstsWidget.buildCustomButton(
-                      //     context, tipo == 'CPF' ? '$nomePF' : '$nomePJ',
-                      //     onPressed: () {
-                      //   efetuaLogin(context, logado.emailUser, logado.senhaUser,
-                      //       codigoId);
-                      //   ItensBottom(currentTab: 0);
-                      // })
-                      );
+                      ));
                 },
               ),
             ),
