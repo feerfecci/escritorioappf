@@ -14,6 +14,26 @@ import '../widgets/snackbar/snack.dart';
 import 'consts.dart';
 
 class ConstsFuture {
+  static Future navigatorPageRoute(BuildContext context, Widget route) {
+    return Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => route,
+    ));
+  }
+
+  static Future<dynamic> restApi(String api) async {
+    var url = Uri.parse("${Consts.comecoAPI}$api");
+    var resposta = await http.get(url);
+    if (resposta.statusCode == 200) {
+      try {
+        return json.decode(resposta.body);
+      } catch (e) {
+        return {'erro': true, 'mensagem': 'Tente Novamente'};
+      }
+    } else {
+      return false;
+    }
+  }
+
   static Future mensagemSolicitacao(int idCorresp,
       {required int tipoEnvio}) async {
     var url = Uri.parse(
@@ -24,12 +44,6 @@ class ConstsFuture {
     } else {
       return null;
     }
-  }
-
-  static Future navigatorRoute(BuildContext context, Widget pageRoute) {
-    return Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return pageRoute;
-    }));
   }
 
   static Future verificarAvisos(context) async {

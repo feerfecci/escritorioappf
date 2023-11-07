@@ -26,27 +26,16 @@ class CarrinhoScreen extends StatefulWidget {
   State<CarrinhoScreen> createState() => _CarrinhoScreenState();
 }
 
-gerarFatura() async {
-  var url = Uri.parse(
-      '${logado.comecoAPI}faturas/?fn=gerar_fatura_corresp&idcliente=${logado.idCliente}&sesscar=${logado.sessCar}');
-  var resposta = await http.get(url);
-  if (resposta.statusCode == 200) {
-    return json.decode(resposta.body);
-  } else {
-    return null;
-  }
-}
-
-utilizarCredito(int creditoCliente, int valorCarrinho) async {
-  var url = Uri.parse(
-      '${logado.comecoAPI}faturas/index.php?fn=utilizar_credito&idcliente=${logado.idCliente}&sesscar=${logado.sessCar}&credito=$creditoCliente&vtotal=$valorCarrinho');
-  var resposta = await http.get(url);
-  if (resposta.statusCode == 200) {
-    return json.decode(resposta.body);
-  } else {
-    return null;
-  }
-}
+// utilizarCredito(int creditoCliente, int valorCarrinho) async {
+//   var url = Uri.parse(
+//       '${logado.comecoAPI}faturas/index.php?fn=utilizar_credito&idcliente=${logado.idCliente}&sesscar=${logado.sessCar}&credito=$creditoCliente&vtotal=$valorCarrinho');
+//   var resposta = await http.get(url);
+//   if (resposta.statusCode == 200) {
+//     return json.decode(resposta.body);
+//   } else {
+//     return null;
+//   }
+// }
 
 var preco = carrinho.totalCarrinho;
 showCustomModalBottom(BuildContext context, child, {required isDismissible}) {

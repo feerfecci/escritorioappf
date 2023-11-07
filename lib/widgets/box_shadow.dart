@@ -3,18 +3,19 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class MeuBoxShadow extends StatelessWidget {
   dynamic child;
-  MeuBoxShadow({required this.child, super.key});
+  bool isCardHome;
+  MeuBoxShadow({required this.child, this.isCardHome = false, super.key});
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: size.height * 0.01,
-      ),
+      padding: EdgeInsets.symmetric(vertical: size.height * 0.01),
       child: Container(
         // color: Colors.black,
-        padding: EdgeInsets.all(size.height * 0.004),
+        padding: EdgeInsets.symmetric(
+            vertical: isCardHome ? size.height * 0.01 : size.height * 0.01,
+            horizontal: isCardHome ? 0 : size.width * 0.02),
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.all(Radius.circular(10)),

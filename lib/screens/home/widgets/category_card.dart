@@ -36,6 +36,7 @@ class _CategoryCardState extends State<CategoryCard> {
         });
       },
       child: MeuBoxShadow(
+        isCardHome: true,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

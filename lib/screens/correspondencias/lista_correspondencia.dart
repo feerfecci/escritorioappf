@@ -1,6 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:convert';
+import 'package:escritorioappf/consts/consts_future.dart';
+import 'package:escritorioappf/itens_bottom.dart';
 import 'package:escritorioappf/screens/correspondencias/widgets/indice_solicitacao.dart';
 import 'package:escritorioappf/widgets/alert_dialogs/alert_vazio.dart';
 import 'package:escritorioappf/widgets/box_shadow.dart';
@@ -18,34 +20,11 @@ import '../../widgets/custom_drawer.dart';
 import '../../widgets/erro_servidor.dart';
 import '../financeiro/financeiro_screen.dart';
 
-correspApi() async {
-  var url = Uri.parse(
-      '${logado.comecoAPI}correspondencias/?fn=read&idcliente=${logado.idCliente}');
-  var resposta = await http.get(url);
-
-  if (resposta.statusCode == 200) {
-    return json.decode(resposta.body);
-  } else {
-    return null;
-  }
-}
-
 class ListaCorresp extends StatefulWidget {
   const ListaCorresp({super.key});
 
   @override
   State<ListaCorresp> createState() => _ListaCorrespState();
-}
-
-adicionarCarrinho(int idCorresp) async {
-  var url = Uri.parse(
-      '${logado.comecoAPI}carrinho/index.php?fn=addcarrinho&idcliente=${logado.idCliente}&idcorresp=$idCorresp&sesscar=${logado.sessCar}');
-  var resposta = await http.get(url);
-  if (resposta.statusCode == 200) {
-    return json.decode(resposta.body);
-  } else {
-    return null;
-  }
 }
 
 mostrarImagem(String arquivo) async {
@@ -85,7 +64,8 @@ class _ListaCorrespState extends State<ListaCorresp> {
     }
 
     return FutureBuilder<dynamic>(
-        future: correspApi(),
+        future: ConstsFuture.restApi(
+            'correspondencias/?fn=read&idcliente=${logado.idCliente}'),
         builder: (BuildContext context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return ListView.builder(
@@ -429,26 +409,26 @@ class _ListaCorrespState extends State<ListaCorresp> {
                       // bool _carregando = false;
                       final RoundedLoadingButtonController btnControllerSucess =
                           RoundedLoadingButtonController();
-                      void startLoading() async {
-                        btnControllerSucess.success();
-                      }
 
                       Widget buildRoudend(double padding) {
                         return RoundedLoadingButton(
                           controller: btnControllerSucess,
                           height: size.height * padding,
                           onPressed: () {
-                            startLoading();
-                            adicionarCarrinho(idCorresp);
-
-                            buildMinhaSnackBar(
-                              context,
-                              categoria: 'adiconado_carrinho',
-                            );
-
-                            setState(() {
-                              statusCorresp = 9;
-                              statusCorrespondencia();
+                            ConstsFuture.restApi(
+                                    'carrinho/index.php?fn=addcarrinho&idcliente=${logado.idCliente}&idcorresp=$idCorresp&sesscar=${logado.sessCar}')
+                                .then((value) {
+                              if (!value['erro']) {
+                                btnControllerSucess.success();
+                                setState(() {
+                                  statusCorresp == 9;
+                                });
+                              } else {
+                                buildMinhaSnackBar(
+                                  context,
+                                  categoria: 'err_carrinho',
+                                );
+                              }
                             });
                           },
                           successIcon: Icons.check,
@@ -496,21 +476,31 @@ class _ListaCorrespState extends State<ListaCorresp> {
                       padding:
                           EdgeInsets.symmetric(vertical: size.height * 0.01),
                       child: Center(
-                          child: ConstsWidget.buildTextTitle(
-                              'Confira seu carrinho no menu inicial')
+                        child: ConstsWidget.buildCustomButton(
+                          context,
+                          'Confira seu carrinho aqui',
+                          onPressed: () {
+                            ConstsFuture.navigatorPageRoute(
+                                    context, ItensBottom(currentTab: 1))
+                                .then((value) => buildMinhaSnackBar(
+                                      context,
+                                      categoria: 'adiconado_carrinho',
+                                    ));
+                          },
+                        ),
 
-                          //     ConstsWidget.buildCustomButton(
-                          //   context,
-                          //   ,
-                          //   icon: Icons.remove_red_eye_rounded,
-                          //   onPressed: () {
-                          //     Navigator.of(context).push(MaterialPageRoute(
-                          //         builder: (context) => ItensBottom(
-                          //               currentTab: 1,
-                          //             )));
-                          //   },
-                          // )
-                          ),
+                        //     ConstsWidget.buildCustomButton(
+                        //   context,
+                        //   ,
+                        //   icon: Icons.remove_red_eye_rounded,
+                        //   onPressed: () {
+                        //     Navigator.of(context).push(MaterialPageRoute(
+                        //         builder: (context) => ItensBottom(
+                        //               currentTab: 1,
+                        //             )));
+                        //   },
+                        // )
+                      ),
                     );
                   //Na fatura
                   case 10:

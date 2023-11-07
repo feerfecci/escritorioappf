@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps, use_build_context_synchronously
 
+import 'package:escritorioappf/consts/consts_future.dart';
 import 'package:escritorioappf/logado.dart';
 import 'package:escritorioappf/screens/correspondencias/correspondencia_screen.dart';
 import 'package:escritorioappf/widgets/shimmer_widget.dart';
@@ -31,8 +32,7 @@ class AlertDialogSolicitacao extends StatefulWidget {
 }
 
 solicitar({idCorresp, idSolicitacao}) async {
-  final url = Uri.parse(
-      '${logado.comecoAPI}correspondencias/index.php?fn=escolhe_tipo_envio&idcorresp=${idCorresp}&tp_envio=${idSolicitacao}&idcliente=${logado.idCliente}');
+  final url = Uri.parse('${logado.comecoAPI}');
   var resposta = await http.get(url);
 
   if (resposta.statusCode == 200) {
@@ -170,18 +170,23 @@ class _AlertDialogSolicitacaoState extends State<AlertDialogSolicitacao> {
                                 ElevatedButton(
                                   onPressed: isChecked
                                       ? () async {
-                                          solicitar(
-                                              idCorresp: widget.idCorresp,
-                                              idSolicitacao:
-                                                  widget.idSolicitacao);
-                                          Navigator.of(context).pop();
-                                          await buildSnackBar(context);
-                                          Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    CorrespondenciasScreen(),
-                                              ));
+                                          ConstsFuture.restApi(
+                                                  'correspondencias/index.php?fn=escolhe_tipo_envio&idcorresp=${widget.idCorresp}&tp_envio=${widget.idSolicitacao}&idcliente=${logado.idCliente}')
+                                              .then((value) {
+                                            if (!value['erro']) {
+                                              Navigator.of(context).pop();
+                                              Navigator.of(context).pop();
+
+                                              ConstsFuture.navigatorPageRoute(
+                                                  context,
+                                                  CorrespondenciasScreen());
+                                              buildMinhaSnackBar(
+                                                context,
+                                                categoria:
+                                                    'correspondencia_solicitada',
+                                              );
+                                            }
+                                          });
                                         }
                                       : () {},
                                   style: ElevatedButton.styleFrom(
@@ -215,14 +220,5 @@ class _AlertDialogSolicitacaoState extends State<AlertDialogSolicitacao> {
                 paddingBottom: 0.01),
           );
         });
-  }
-
-  buildSnackBar(context) {
-    ScaffoldMessenger.of(context).clearSnackBars();
-
-    buildMinhaSnackBar(
-      context,
-      categoria: 'correspondencia_solicitada',
-    );
   }
 }

@@ -200,99 +200,99 @@ showFaturas() {
             var idFatura = usuario[index]['id'];
             usuario[index]["items"];
             return MeuBoxShadow(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: snapshot.data['items'][index]['items'].length,
-                      itemBuilder: ((context, index) {
-                        var descri = usuario2["items"][index]["description"];
-                        return SizedBox(
-                          width: size.width * 0.84,
-                          child: ConstsWidget.buildTextTitle(descri),
-                        );
-                      }),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: size.height * 0.006),
-                      child: ConstsWidget.buildTextSubTitle(
-                          'Vencimento: $parsedDate'),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: size.height * 0.006),
-                      child: Text(
-                        usuario[index]["total"],
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                        ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: snapshot.data['items'][index]['items'].length,
+                    itemBuilder: ((context, index) {
+                      var descri = usuario2["items"][index]["description"];
+                      return SizedBox(
+                        width: size.width * 0.84,
+                        child: ConstsWidget.buildTextTitle(descri),
+                      );
+                    }),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: size.height * 0.006),
+                    child: ConstsWidget.buildTextSubTitle(
+                        'Vencimento: $parsedDate'),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: size.height * 0.006),
+                    child: Text(
+                      usuario[index]["total"],
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
                       ),
                     ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: size.height * 0.006),
+                    child: Center(
+                        child: ConstsWidget.buildCustomButton(
+                      context,
+                      usuario[index]["status"] == "canceled"
+                          ? 'Ver fatura Cancelada'
+                          : usuario[index]["status"] == "pending"
+                              ? 'Ver fatura Pendente'
+                              : 'Ver fatura Paga',
+                      onPressed: () {
+                        final Uri url = Uri.parse(
+                          usuario[index]['secure_url'],
+                        );
+                        _launchUrl(
+                          url,
+                        );
+                      },
+                      color: usuario[index]["status"] == "canceled"
+                          ? Color.fromRGBO(63, 82, 100, 1)
+                          : usuario[index]["status"] == "pending"
+                              ? Color.fromRGBO(240, 204, 34, 1)
+                              : Color.fromRGBO(117, 189, 89, 1),
+                    )),
+                  ),
+                  if (usuario[index]["status"] == "pending")
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: size.height * 0.006),
-                      child: Center(
-                          child: ConstsWidget.buildCustomButton(
-                        context,
-                        usuario[index]["status"] == "canceled"
-                            ? 'Ver fatura Cancelada'
-                            : usuario[index]["status"] == "pending"
-                                ? 'Ver fatura Pendente'
-                                : 'Ver fatura Paga',
-                        onPressed: () {
-                          final Uri url = Uri.parse(
-                            usuario[index]['secure_url'],
-                          );
-                          _launchUrl(
-                            url,
-                          );
-                        },
-                        color: usuario[index]["status"] == "canceled"
-                            ? Color.fromRGBO(63, 82, 100, 1)
-                            : usuario[index]["status"] == "pending"
-                                ? Color.fromRGBO(240, 204, 34, 1)
-                                : Color.fromRGBO(117, 189, 89, 1),
-                      )),
-                    ),
-                    usuario[index]["status"] == "pending"
-                        ? ConstsWidget.buildCustomButton(
-                            context, 'Fazer Pagamento', onPressed: () {
-                            showCustomModalBottom(
-                                context,
-                                isDismissible: true,
-                                Padding(
-                                  padding: EdgeInsets.all(size.width * 0.01),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: size.height * 0.01),
-                                        child: ConstsWidget.buildTextTitle(
-                                            'Escolha a forma de pagamento'),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: size.height * 0.006),
-                                        child: ConstsWidget.buildTextSubTitle(
-                                            'Vencimento: $parsedDate'),
-                                      ),
-                                      copiaButton(idFatura)
-                                    ],
+                      padding: EdgeInsets.only(top: size.height * 0.01),
+                      child: ConstsWidget.buildCustomButton(
+                          context, 'Fazer Pagamento', onPressed: () {
+                        showCustomModalBottom(
+                            context,
+                            isDismissible: true,
+                            Padding(
+                              padding: EdgeInsets.all(size.width * 0.01),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: size.height * 0.01),
+                                    child: ConstsWidget.buildTextTitle(
+                                        'Escolha a forma de pagamento'),
                                   ),
-                                ));
-                          })
-                        : SizedBox(
-                            height: 1,
-                          )
-                  ],
-                ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: size.height * 0.006),
+                                    child: ConstsWidget.buildTextSubTitle(
+                                        'Vencimento: $parsedDate'),
+                                  ),
+                                  copiaButton(idFatura)
+                                ],
+                              ),
+                            ));
+                      }),
+                    ),
+                  SizedBox(
+                    height: size.height * 0.01,
+                  ),
+                ],
               ),
             );
           }),

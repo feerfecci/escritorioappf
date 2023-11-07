@@ -15,7 +15,7 @@ import '../../Consts/consts_widget.dart';
 
 // ignore: must_be_immutable
 class ItensBottom extends StatefulWidget {
-  int currentTab;
+  int? currentTab;
   BuildContext? context;
   ItensBottom({this.context, required this.currentTab, super.key});
 
@@ -33,7 +33,8 @@ class _ItensBottomState extends State<ItensBottom> {
   void initState() {
     super.initState();
     initPlatformState();
-    _pageController = PageController();
+    widget.currentTab = widget.currentTab ?? 0;
+    _pageController = PageController(initialPage: widget.currentTab!);
   }
 
   Future<void> initPlatformState() async {
@@ -53,7 +54,7 @@ class _ItensBottomState extends State<ItensBottom> {
       return BottomNavigationBar(
         iconSize: size.height * height,
         showUnselectedLabels: logado.bolinha == 0 ? true : false,
-        currentIndex: widget.currentTab,
+        currentIndex: widget.currentTab!,
         onTap: (p) {
           _pageController.jumpToPage(p);
         },

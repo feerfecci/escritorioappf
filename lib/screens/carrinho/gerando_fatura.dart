@@ -1,3 +1,4 @@
+import 'package:escritorioappf/consts/consts_future.dart';
 import 'package:escritorioappf/itens_bottom.dart';
 import 'package:escritorioappf/widgets/snackbar/snack.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,8 @@ class _GerandoFaturaState extends State<GerandoFatura> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return FutureBuilder<dynamic>(
-        future: gerarFatura(),
+        future: ConstsFuture.restApi(
+            'faturas/?fn=gerar_fatura_corresp&idcliente=${logado.idCliente}&sesscar=${logado.sessCar}'),
         builder: (BuildContext context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return SizedBox(

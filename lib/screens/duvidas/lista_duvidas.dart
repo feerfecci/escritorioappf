@@ -119,6 +119,7 @@ class ListaDuvidas extends StatelessWidget {
                 }
 
                 return MeuBoxShadow(
+                  isCardHome: true,
                   child: ConstsWidget.buildLayout(context,
                       seMobile: buildDuvidasListTile(0.94),
                       seWeb: buildDuvidasListTile(0.65)),

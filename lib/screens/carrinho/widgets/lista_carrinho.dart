@@ -142,6 +142,7 @@ class _ListCarrinhoState extends State<ListaCarrinho> {
                 return ConstsWidget.buildLayout(
                   context,
                   seMobile: MeuBoxShadow(
+                    isCardHome: true,
                     child: Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: size.width * 0.03),

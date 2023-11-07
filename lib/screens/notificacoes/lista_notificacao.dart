@@ -176,6 +176,7 @@ class _ListaNotificacaoState extends State<ListaNotificacao> {
                   }
 
                   return MeuBoxShadow(
+                    isCardHome: true,
                     child: ConstsWidget.buildLayout(context,
                         seMobile: buildNotificationTile(0.93),
                         seWeb: buildNotificationTile(0.65)),
