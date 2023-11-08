@@ -4,8 +4,8 @@ import 'package:escritorioappf/logado.dart';
 import 'package:escritorioappf/screens/login/login_screen.dart';
 import 'package:escritorioappf/repository/shared_preferences.dart';
 import 'package:flutter/material.dart';
+import '../Consts/consts_future.dart';
 import '../repository/biometric_data.dart';
-import '../../logado.dart' as logado;
 import '../../Consts/consts_widget.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,7 +21,7 @@ class SplashScreenState extends State<SplashScreen> {
     prefService.readChache().then((value) async {
       Map<String, dynamic> infos = value;
       if (infos['email'] == null || infos['senha'] == null) {
-        logado.navigatorRoute(context, LoginScreen());
+        ConstsFuture.navigatorPageRoute(context, LoginScreen());
       } else if (infos['email'] != null || infos['senha'] != null) {
         Future authentic() async {
           final auth = await LocalAuthApi.authenticate();
@@ -39,7 +39,7 @@ class SplashScreenState extends State<SplashScreen> {
 
         return authentic();
       } else {
-        logado.navigatorRoute(context, LoginScreen());
+        ConstsFuture.navigatorPageRoute(context, LoginScreen());
       }
     });
   }

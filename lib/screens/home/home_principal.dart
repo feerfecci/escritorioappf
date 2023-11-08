@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:escritorioappf/widgets/cabecalho.dart';
 import 'package:escritorioappf/widgets/erro_servidor.dart';
 import 'package:flutter/material.dart';
+import '../../consts/consts.dart';
 import '../../widgets/box_shadow.dart';
 import '../../widgets/shimmer_widget.dart';
 import '../meu_perfil/meu_perfil_screen.dart';
@@ -26,9 +27,10 @@ class HomePrincipal extends StatefulWidget {
 }
 
 contagemNaoPagas() async {
+  print(logado.idIugu);
   try {
     var url = Uri.parse(
-        // '${logado.comecoAPI}faturas/?fn=qtd_pendente&idcliente=${logado.idIugu}&api_token=${logado.tokenIugu}'
+        // '${Consts.comecoAPI}faturas/?fn=qtd_pendente&idcliente=${logado.idIugu}&api_token=${logado.tokenIugu}'
         'https://api.iugu.com/v1/invoices/?customer_id=${logado.idIugu}&api_token=${logado.tokenIugu}&status_filter=pending');
     var resposta = await http.get(url);
 
@@ -87,7 +89,7 @@ Widget showNotificacaoCategory() {
         }
         quantidadeNaoLida = snapshot.data['total_nao_lidas'];
         return CategoryCard(
-          iconApi: '${logado.iconAssets}notificacoes.png',
+          iconApi: '${Consts.iconAssets}notificacoes.png',
           title: 'Notificações',
           screen: NotificacaoScreen(),
           contagem: quantidadeNaoLida,
@@ -110,7 +112,7 @@ Widget showFinanceiroCategory() {
         int? quantidadePendente = snapshot.data['totalItems'];
 
         return CategoryCard(
-          iconApi: '${logado.iconAssets}financeiro.png',
+          iconApi: '${Consts.iconAssets}financeiro.png',
           title: 'Faturas',
           screen: FinanceiroScreen(),
           contagem: quantidadePendente,
@@ -133,14 +135,14 @@ Widget buildCardsGrid(
     crossAxisSpacing: crossAxisSpacing,
     children: [
       CategoryCard(
-        iconApi: '${logado.iconAssets}correspondencias.png',
+        iconApi: '${Consts.iconAssets}correspondencias.png',
         title: 'Correspondências',
         screen: CorrespondenciasScreen(),
         contagem: 0,
         aparece: false,
       ),
       CategoryCard(
-        iconApi: '${logado.iconAssets}perfil.png',
+        iconApi: '${Consts.iconAssets}perfil.png',
         title: 'Meu Perfil',
         screen: MeuPerfilScreen(),
         contagem: 0,
@@ -173,12 +175,12 @@ class _HomePrincipalState extends State<HomePrincipal> {
             children: [
               CardSalas(
                 titulo: 'Alugar Sala de Reunião',
-                uriImage: '${logado.arquivoAssets}banner-sr.jpg',
+                uriImage: '${Consts.arquivoAssets}banner-sr.jpg',
                 zapzap: 'sr',
               ),
               CardSalas(
                 titulo: 'Alugar Sala de Treinamento',
-                uriImage: '${logado.arquivoAssets}banner-st.jpg',
+                uriImage: '${Consts.arquivoAssets}banner-st.jpg',
                 zapzap: 'st',
               ),
               SizedBox(

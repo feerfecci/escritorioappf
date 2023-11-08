@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../Consts/consts_future.dart';
 import '../../screens/meu_perfil/meu_perfil_screen.dart';
-import '/logado.dart' as logado;
 
 alertDialogSenhaPadrao(BuildContext context) {
   var size = MediaQuery.of(context).size;
@@ -38,7 +38,7 @@ alertDialogSenhaPadrao(BuildContext context) {
               ElevatedButton(
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                   onPressed: () {
-                    logado.navigatorRoute(context, MeuPerfilScreen());
+                    ConstsFuture.navigatorPageRoute(context, MeuPerfilScreen());
                   },
                   child: Text('Ir para Meu Perfil')),
             ],

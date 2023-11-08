@@ -1,6 +1,5 @@
 import 'package:escritorioappf/widgets/fundo_screen.dart';
 import 'package:flutter/material.dart';
-import '../../logado.dart' as logado;
 import '../../Consts/consts_widget.dart';
 
 Widget MeuNested({

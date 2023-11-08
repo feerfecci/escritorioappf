@@ -1,16 +1,16 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import '../../consts/consts.dart';
 import '../../Consts/consts_widget.dart';
 import 'alert_vazio.dart';
 import '../erro_servidor.dart';
 import '../progress_indicator.dart';
-import '/logado.dart' as logado;
 
 alertaDialogAviso(BuildContext context) {
   apiAvisos() async {
     var url = Uri.parse(
-        '${logado.comecoAPI}avisos-diversos/index.php?fn=mostrarAviso');
+        '${Consts.comecoAPI}avisos-diversos/index.php?fn=mostrarAviso');
     var resposta = await http.get(url);
     if (resposta.statusCode == 200) {
       return json.decode(resposta.body);

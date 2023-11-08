@@ -3,11 +3,11 @@ library globals;
 
 import 'package:escritorioappf/consts/consts_future.dart';
 import 'package:escritorioappf/itens_bottom.dart';
-import 'package:escritorioappf/screens/carrinho/carrinho_screen.dart';
 import 'package:escritorioappf/widgets/box_shadow.dart';
 import 'package:escritorioappf/widgets/erro_servidor.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../../../consts/consts.dart';
 import '../../../Consts/consts_widget.dart';
 import '../../../logado.dart' as logado;
 
@@ -19,7 +19,7 @@ import 'loading_carrinho.dart';
 int? bolinhaCarrinho;
 carrinhoApi() async {
   var url = Uri.parse(
-      '${logado.comecoAPI}carrinho/index.php?fn=listacarrinho&idcliente=${logado.idCliente}');
+      '${Consts.comecoAPI}carrinho/index.php?fn=listacarrinho&idcliente=${logado.idCliente}');
   var resposta = await http.get(url);
   if (resposta.statusCode == 200) {
     return json.decode(resposta.body);
@@ -67,7 +67,7 @@ class _ListaItensCarrinhoState extends State<ListaItensCarrinho> {
 
                     excluirCarrinho() async {
                       var url = Uri.parse(
-                          '${logado.comecoAPI}carrinho/index.php?fn=deleta_corresp_carrinho&idcorresp=$idCorresp');
+                          '${Consts.comecoAPI}carrinho/index.php?fn=deleta_corresp_carrinho&idcorresp=$idCorresp');
                       var resposta = await http.get(url);
                       if (resposta.statusCode == 200) {
                         return json.decode(resposta.body);
@@ -243,7 +243,7 @@ class _ListaItensCarrinhoState extends State<ListaItensCarrinho> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.network('${logado.arquivoAssets}ico-lupa.png'),
+                  Image.network('${Consts.arquivoAssets}ico-lupa.png'),
                   Text(
                     textAlign: TextAlign.center,
                     'Carrinho vazio. Adicione uma correspondência aqui',

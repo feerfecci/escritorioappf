@@ -6,7 +6,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:http/http.dart' as http;
 import 'package:html_unescape/html_unescape.dart';
 import 'dart:convert';
-import '../../logado.dart' as logado;
+import '../../consts/consts.dart';
 import '../../Consts/consts_widget.dart';
 import '../../widgets/erro_servidor.dart';
 
@@ -22,7 +22,7 @@ class ListaDuvidas extends StatelessWidget {
   }
 
   pegaDuvidas() async {
-    var url = Uri.parse('${logado.comecoAPI}duvidas/?fn=lista');
+    var url = Uri.parse('${Consts.comecoAPI}duvidas/?fn=lista');
     var resposta = await http.get(url);
 
     if (resposta.statusCode == 200) {
@@ -34,7 +34,7 @@ class ListaDuvidas extends StatelessWidget {
 
   avaliacaoAPI(String gostou, String idDuvida) async {
     var url = Uri.parse(
-        '${logado.comecoAPI}duvidas/?fn=ajudou_$gostou&id=$idDuvida&ajuda_$gostou=1');
+        '${Consts.comecoAPI}duvidas/?fn=ajudou_$gostou&id=$idDuvida&ajuda_$gostou=1');
     //                  /duvidas/?fn=ajudou_  sim  &id=   1     &ajuda_  sim  =1
     var resposta = await http.get(url);
     if (resposta.statusCode == 200) {

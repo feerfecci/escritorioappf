@@ -7,6 +7,7 @@ import 'package:escritorioappf/widgets/shimmer_widget.dart';
 import 'package:escritorioappf/widgets/snackbar/snack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import '../../../consts/consts.dart';
 import '../../../Consts/consts_widget.dart';
 import '../../../logado.dart' as logado;
 
@@ -32,7 +33,7 @@ class AlertDialogSolicitacao extends StatefulWidget {
 }
 
 solicitar({idCorresp, idSolicitacao}) async {
-  final url = Uri.parse('${logado.comecoAPI}');
+  final url = Uri.parse(Consts.comecoAPI);
   var resposta = await http.get(url);
 
   if (resposta.statusCode == 200) {

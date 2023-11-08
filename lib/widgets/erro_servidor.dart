@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:escritorioappf/logado.dart' as logado;
-
 import '../Consts/consts_widget.dart';
 
 class ErroServidor extends StatefulWidget {

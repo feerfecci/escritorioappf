@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'dart:convert';
 import 'package:escritorioappf/consts/consts_future.dart';
 import 'package:escritorioappf/itens_bottom.dart';
 import 'package:escritorioappf/screens/correspondencias/widgets/indice_solicitacao.dart';
@@ -11,9 +10,9 @@ import 'package:escritorioappf/widgets/snackbar/snack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:intl/intl.dart';
-import 'package:http/http.dart' as http;
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../Consts/Consts.dart';
 import '../../logado.dart' as logado;
 import '../../Consts/consts_widget.dart';
 import '../../widgets/custom_drawer.dart';
@@ -39,7 +38,7 @@ _launchUrl(codiRastreio) async {
   var url = Uri.parse(
       'https://linketrack.com/track?codigo=$codiRastreio&utm_source=track');
   await launchUrl(
-    mode: LaunchMode.externalNonBrowserApplication,
+    mode: LaunchMode.inAppWebView,
     url,
   );
 }
@@ -467,7 +466,7 @@ class _ListaCorrespState extends State<ListaCorresp> {
                         title: Text(
                           'Há pendencias financeiras',
                           style: TextStyle(
-                              color: Colors.red, fontSize: logado.fontTitulo),
+                              color: Colors.red, fontSize: Consts.fontTitulo),
                         ),
                         children: [
                           Html(data: logado.statusCliente),
@@ -510,7 +509,8 @@ class _ListaCorrespState extends State<ListaCorresp> {
                         'Confira as Faturas',
                         icon: Icons.payments_rounded,
                         onPressed: () {
-                          logado.navigatorRoute(context, FinanceiroScreen());
+                          ConstsFuture.navigatorPageRoute(
+                              context, FinanceiroScreen());
                         },
                       ),
                     );

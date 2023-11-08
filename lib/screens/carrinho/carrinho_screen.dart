@@ -14,7 +14,6 @@ import '../../widgets/custom_drawer.dart';
 import '../../itens_bottom.dart';
 import '../../../logado.dart' as logado;
 import '../../Consts/consts_widget.dart';
-import '../../Consts/consts_widget.dart';
 import 'widgets/lista_itens_carrinho.dart' as carrinho;
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -29,7 +28,7 @@ class CarrinhoScreen extends StatefulWidget {
 
 // utilizarCredito(int creditoCliente, int valorCarrinho) async {
 //   var url = Uri.parse(
-//       '${logado.comecoAPI}faturas/index.php?fn=utilizar_credito&idcliente=${logado.idCliente}&sesscar=${logado.sessCar}&credito=$creditoCliente&vtotal=$valorCarrinho');
+//       '${Consts.comecoAPI}faturas/index.php?fn=utilizar_credito&idcliente=${logado.idCliente}&sesscar=${logado.sessCar}&credito=$creditoCliente&vtotal=$valorCarrinho');
 //   var resposta = await http.get(url);
 //   if (resposta.statusCode == 200) {
 //     return json.decode(resposta.body);

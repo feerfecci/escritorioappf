@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app_version_checker/flutter_app_version_checker.dart';
 import 'package:validatorless/validatorless.dart';
+import '../../consts/consts.dart';
 import '../../logado.dart';
 import '../../../logado.dart' as logado;
 import '../../Consts/consts_widget.dart';
@@ -177,7 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
             // fixedSize: Size(double.maxFinite, size.height),
             backgroundColor: logado.kButtonColor,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(logado.borderButton))),
+                borderRadius: BorderRadius.circular(Consts.borderButton))),
         onPressed: () async {
           var formValid = formKey.currentState?.validate() ?? false;
           if (formValid) {
@@ -291,7 +292,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               vertical: size.height * 0.04),
                           child: Image(
                             image: NetworkImage(
-                                '${logado.arquivoAssets}logo-login-f.png'),
+                                '${Consts.arquivoAssets}logo-login-f.png'),
                           ),
                         ),
                         buildTextFormEmail(0.04),
@@ -319,7 +320,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               vertical: size.height * 0.08),
                           child: Image(
                             image: NetworkImage(
-                                '${logado.arquivoAssets}logo-login-f.png'),
+                                '${Consts.arquivoAssets}logo-login-f.png'),
                           ),
                         ),
                         buildTextFormEmail(0.01),

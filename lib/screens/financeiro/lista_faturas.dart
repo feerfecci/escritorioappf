@@ -16,7 +16,7 @@ import '../../widgets/erro_servidor.dart';
 
 faturaApiCliente() async {
   var url = Uri.parse(
-      // '${logado.comecoAPI}faturas/?fn=lista_faturas&idcliente=${logado.idIugu}&api_token=${logado.tokenIugu}');
+      // '${Consts.comecoAPI}faturas/?fn=lista_faturas&idcliente=${logado.idIugu}&api_token=${logado.tokenIugu}');
       'https://api.iugu.com/v1/invoices/?customer_id=${logado.idIugu}&api_token=${logado.tokenIugu}');
   var resposta = await http.get(url);
 

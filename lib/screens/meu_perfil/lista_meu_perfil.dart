@@ -8,6 +8,7 @@ import 'package:escritorioappf/widgets/erro_servidor.dart';
 import 'package:escritorioappf/widgets/snackbar/snack.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import '../../consts/consts.dart';
 import '../../logado.dart' as logado;
 import '../../Consts/consts_widget.dart';
 import 'package:http/http.dart' as http;
@@ -30,7 +31,7 @@ Future<dynamic> pegarDadosCliente() async {
   // return jsonDecode(resposta.body);
 
   final url = Uri.parse(
-      '${logado.comecoAPI}clientes/?fn=dadoscliente&idcliente=${logado.idCliente}');
+      '${Consts.comecoAPI}clientes/?fn=dadoscliente&idcliente=${logado.idCliente}');
 
   var resposta = await http.get(url);
 
@@ -445,7 +446,7 @@ class ListaMeuPerfilState extends State<ListaMeuPerfil> {
                             (novaSenhaController.text != '' ||
                                 confirmaSenhaController.text != '')) {
                           changeApi(
-                              '${logado.comecoAPI}/clientes/?fn=alterar_senha&email_principal=${logado.emailUser}&senha=${novaSenhaController.text}');
+                              '${Consts.comecoAPI}/clientes/?fn=alterar_senha&email_principal=${logado.emailUser}&senha=${novaSenhaController.text}');
                           Navigator.of(context).pop();
                           buildMinhaSnackBar(
                             context,
@@ -568,7 +569,7 @@ class ListaMeuPerfilState extends State<ListaMeuPerfil> {
                             textAlign: TextAlign.start,
                             style: TextStyle(
                                 color: Colors.red,
-                                fontSize: logado.fontSubTitulo),
+                                fontSize: Consts.fontSubTitulo),
                           ),
                         ),
                         buildTextForm(
@@ -789,7 +790,7 @@ class ListaMeuPerfilState extends State<ListaMeuPerfil> {
                         formKey.currentState!.save();
                       }
                       changeApi(
-                              '${logado.comecoAPI}clientes/?fn=alteracao_cliente&idcliente=${logado.idCliente}&responsavel=${user.responsavel}&email_principal=${user.email_principal}&cep=${user.cep}&endereco=${user.endereco}&numero=${user.numero}&complemento=${user.complemento}&bairro=${user.bairro}&cidade=${user.cidade}&estado=${user.estado}&email_cobranca=${user.email_cobranca}&telefone_cobranca=${user.telefone_cobranca}&endereco_cobranca=${user.endereco_cobranca}&numero_cobranca=${user.numero_cobranca}&complemento_cobranca=${user.complemento_cobranca}&bairro_cobranca=${user.bairro_cobranca}&cidade_cobranca=${user.cidade_cobranca}&cep_cobranca=${user.cep_cobranca}&estado_cobranca=${user.estado_cobranca}&razao_social_pf=${user.razao_social_pf}&razao_social=${user.razao_social}&nome_fantasia=${user.nome_fantasia}&telefone1=${user.telefone1}&telefone2=${user.telefone2}&responsavel_2=${user.responsavel2}&email_secundario=${user.email2}&responsavel3=${user.responsavel3}&email3=${user.email3}&responsavel4=${user.responsavel4}&email4=${user.email4}&responsavel5=${user.responsavel5}&email5=${user.email5}')
+                              '${Consts.comecoAPI}clientes/?fn=alteracao_cliente&idcliente=${logado.idCliente}&responsavel=${user.responsavel}&email_principal=${user.email_principal}&cep=${user.cep}&endereco=${user.endereco}&numero=${user.numero}&complemento=${user.complemento}&bairro=${user.bairro}&cidade=${user.cidade}&estado=${user.estado}&email_cobranca=${user.email_cobranca}&telefone_cobranca=${user.telefone_cobranca}&endereco_cobranca=${user.endereco_cobranca}&numero_cobranca=${user.numero_cobranca}&complemento_cobranca=${user.complemento_cobranca}&bairro_cobranca=${user.bairro_cobranca}&cidade_cobranca=${user.cidade_cobranca}&cep_cobranca=${user.cep_cobranca}&estado_cobranca=${user.estado_cobranca}&razao_social_pf=${user.razao_social_pf}&razao_social=${user.razao_social}&nome_fantasia=${user.nome_fantasia}&telefone1=${user.telefone1}&telefone2=${user.telefone2}&responsavel_2=${user.responsavel2}&email_secundario=${user.email2}&responsavel3=${user.responsavel3}&email3=${user.email3}&responsavel4=${user.responsavel4}&email4=${user.email4}&responsavel5=${user.responsavel5}&email5=${user.email5}')
                           .then((value) {
                         ConstsFuture.navigatorRemoveUntil(
                             context, ItensBottom(currentTab: 0));

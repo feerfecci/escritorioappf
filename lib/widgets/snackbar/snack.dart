@@ -1,16 +1,16 @@
 import 'package:escritorioappf/widgets/shimmer_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:escritorioappf/logado.dart' as logado;
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../../consts/consts.dart';
 import '../../Consts/consts_widget.dart';
 
 buildMinhaSnackBar(BuildContext context, {required String categoria}) {
   ScaffoldMessenger.of(context).clearSnackBars();
   var size = MediaQuery.of(context).size;
   apiAvisos() async {
-    var url = Uri.parse('${logado.comecoAPI}snackbars/?fn=$categoria');
+    var url = Uri.parse('${Consts.comecoAPI}snackbars/?fn=$categoria');
     var resposta = await http.get(url);
     if (resposta.statusCode == 200) {
       return json.decode(resposta.body);

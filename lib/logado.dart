@@ -6,6 +6,7 @@ import 'package:escritorioappf/widgets/snackbar/snack.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'Consts/Consts.dart';
 import 'itens_bottom.dart';
 import 'repository/shared_preferences.dart';
 import 'screens/login/login_screen.dart';
@@ -17,9 +18,6 @@ const kBackPageColor = Color.fromARGB(255, 245, 245, 255);
 const kButtonColor = Color.fromARGB(255, 0, 134, 252);
 
 int bolinha = 0;
-double fontTitulo = 15;
-double fontSubTitulo = 14;
-double borderButton = 60;
 var creditoCliente = 0;
 String emailUser = '';
 String senhaUser = '';
@@ -42,92 +40,16 @@ String tokenIugu =
 //"0D" teste
     //'0D77FB693D61B5A215E22544A637660B51B4FE40781CD0395FB8FCAC1FDFC7AE';
     '2D283E3209868E23A3BEA593AF76B115E9DE073AE77AA1C6F6A2DD2E84A59E0A';
-const String comecoAPI = 'https://evbrapp.com/api/';
-const String fundoAssets = 'https://escritorioapp.com/img/fundo-tela-';
-const String iconAssets = 'https://escritorioapp.com/img/ico-';
-const String arquivoAssets = 'https://escritorioapp.com/img/';
-
-Widget buildCustomButton(BuildContext context, String title,
-    {IconData? icon,
-    double? altura,
-    Color? color = kButtonColor,
-    required void Function()? onPressed}) {
-  var size = MediaQuery.of(context).size;
-  return ElevatedButton(
-    style: ElevatedButton.styleFrom(
-      backgroundColor: color,
-      fixedSize: Size.fromWidth(double.maxFinite),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(borderButton),
-      ),
-    ),
-    onPressed: onPressed,
-    child: Padding(
-      padding: EdgeInsets.symmetric(vertical: size.height * 0.023),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            title,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          SizedBox(
-            width: size.width * 0.015,
-          ),
-          icon != null ? Icon(size: 18, icon, color: Colors.white) : SizedBox(),
-        ],
-      ),
-    ),
-  );
-}
-
-Widget buildTextTitle(String title, {textAlign, color}) {
-  return Text(
-    title,
-    maxLines: 20,
-    textAlign: textAlign,
-    style: TextStyle(
-      color: color,
-      fontSize: fontTitulo,
-      fontWeight: FontWeight.bold,
-    ),
-  );
-}
-
-Widget buildTextSubTitle(String title, {color}) {
-  return Text(
-    title,
-    maxLines: 20,
-    style: TextStyle(
-      color: color,
-      fontSize: fontSubTitulo,
-      fontWeight: FontWeight.normal,
-    ),
-  );
-}
 
 mensagemSolicitacao(int idCorresp, {required int tipoEnvio}) async {
   var url = Uri.parse(
-      '$comecoAPI/textos-avisos/?fn=tipo_envio&id=$tipoEnvio&idcliente=$idCliente&idcorresp=$idCorresp');
+      '${Consts.comecoAPI}/textos-avisos/?fn=tipo_envio&id=$tipoEnvio&idcliente=$idCliente&idcorresp=$idCorresp');
   var resposta = await http.get(url);
   if (resposta.statusCode == 200) {
     return json.decode(resposta.body);
   } else {
     return null;
   }
-}
-
-Widget buildLayout(BuildContext context,
-    {required Widget seMobile, required Widget seWeb}) {
-  return LayoutBuilder(builder: (context, constraints) {
-    final bool isMobile = constraints.maxWidth < 1000;
-    return isMobile ? seMobile : seWeb;
-  });
 }
 
 Future navigatorRoute(BuildContext context, Widget pageRoute) {
@@ -159,7 +81,8 @@ Future navigatorRoute(BuildContext context, Widget pageRoute) {
 // }
 
 verificarAvisos(context) async {
-  var url = Uri.parse('${comecoAPI}avisos-diversos/index.php?fn=mostrarAviso');
+  var url =
+      Uri.parse('${Consts.comecoAPI}avisos-diversos/index.php?fn=mostrarAviso');
   var resposta = await http.get(url);
   if (resposta.statusCode == 200) {
     var avisosBody = json.decode(resposta.body);
@@ -179,7 +102,7 @@ efetuaLogin(context, String email, String senha, String codigoCliente,
   // }
   final LocalSetting prefService = LocalSetting();
   var url = Uri.parse(
-      '${comecoAPI}login/?fn=login&email=$email&senha=$senha${codigoCliente != '' ? '&codigo=$codigoCliente' : ''}');
+      '${Consts.comecoAPI}login/?fn=login&email=$email&senha=$senha${codigoCliente != '' ? '&codigo=$codigoCliente' : ''}');
 
   var resposta = await http.get(url);
   if (resposta.statusCode == 200) {
@@ -214,6 +137,7 @@ efetuaLogin(context, String email, String senha, String codigoCliente,
       }
 
       verificarAvisos(context);
+
       if (senha == '123mudar') {
         alertDialogSenhaPadrao(context);
       }

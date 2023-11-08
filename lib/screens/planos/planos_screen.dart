@@ -9,6 +9,7 @@ import 'package:escritorioappf/widgets/nested_scroll.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import '../../consts/consts.dart';
 import '../../logado.dart' as logado;
 import '../../Consts/consts_widget.dart';
 import '../../widgets/alert_dialogs/alert_vazio.dart';
@@ -24,25 +25,13 @@ class PlanosScreen extends StatefulWidget {
 
 pegarPlanos() async {
   var url = Uri.parse(
-      '${logado.comecoAPI}planos/index.php?fn=lista&idcliente=${logado.idIugu}');
+      '${Consts.comecoAPI}planos/index.php?fn=lista&idcliente=${logado.idIugu}');
   var resposta = await http.get(url);
   if (resposta.statusCode == 200) {
     return json.decode(resposta.body);
   } else {
     return null;
   }
-}
-
-Widget buildListItens(String title, String subTitle) {
-  return Padding(
-    padding: EdgeInsets.symmetric(vertical: 4),
-    child: Row(
-      children: [
-        ConstsWidget.buildTextTitle(title),
-        Text(subTitle),
-      ],
-    ),
-  );
 }
 
 class _PlanosScreenState extends State<PlanosScreen> {
@@ -66,14 +55,26 @@ class _PlanosScreenState extends State<PlanosScreen> {
       );
     }
 
+    Widget buildListItens(String title, String subTitle) {
+      return Padding(
+        padding: EdgeInsets.symmetric(vertical: size.height * 0.01),
+        child: Row(
+          children: [
+            ConstsWidget.buildTextTitle(title),
+            Text(subTitle),
+          ],
+        ),
+      );
+    }
+
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
       endDrawer: CustomDrawer(
-        fundo: '${logado.fundoAssets}assinaturas.jpg',
+        fundo: '${Consts.fundoAssets}assinaturas.jpg',
       ),
       body: MeuNested(
-        imageAsset: "${logado.fundoAssets}assinaturas.jpg",
+        imageAsset: "${Consts.fundoAssets}assinaturas.jpg",
         context: context,
         body: RefreshIndicator(
           onRefresh: () async {
@@ -165,11 +166,19 @@ class _PlanosScreenState extends State<PlanosScreen> {
                                     buildListItens('Valor: ', '$valor'),
                                     buildListItens('Data de início: ',
                                         '${formatDate(comecaEm)}'),
-                                    buildListItens('Data de expiração: ',
-                                        '${formatDate(expiraEm)}'),
-                                    ConstsWidget.buildTextTitle(
-                                        'ID Assinatura: '),
-                                    Text('${items['id']}'),
+                                    if (expiraEm != null)
+                                      buildListItens('Data de expiração: ',
+                                          ' ${formatDate(expiraEm)}'),
+                                    ConstsWidget.buildPadding001(context,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            ConstsWidget.buildTextTitle(
+                                                'ID Assinatura: '),
+                                            Text('${items['id']}'),
+                                          ],
+                                        )),
                                   ],
                                 ),
                               ),

@@ -2,8 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:email_validator/email_validator.dart';
 import 'package:escritorioappf/widgets/snackbar/snack.dart';
-import '../../../logado.dart' as logado;
-import '../../Consts/consts_widget.dart';
+import '../../consts/consts.dart';
 import '../../Consts/consts_widget.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
@@ -22,7 +21,7 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha>
   final _emailController = TextEditingController();
   recuperar() async {
     var url = Uri.parse(
-        '${logado.comecoAPI}recuperar_senha/?fn=recuperar_senha&email=${_emailController.text}');
+        '${Consts.comecoAPI}recuperar_senha/?fn=recuperar_senha&email=${_emailController.text}');
     var resposta = await http.get(url);
 
     if (resposta.statusCode == 200) {
@@ -127,7 +126,7 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha>
                   child: Image(
                     alignment: Alignment.centerRight,
                     image:
-                        NetworkImage('${logado.arquivoAssets}logo-login-f.png'),
+                        NetworkImage('${Consts.arquivoAssets}logo-login-f.png'),
                   ),
                 ),
                 Container(

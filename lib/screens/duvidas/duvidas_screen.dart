@@ -22,7 +22,7 @@ class _DuvidasScreenState extends State<DuvidasScreen> {
           Cabecalho(
               context: context,
               titulo: 'Dúvidas',
-              subTitulo: 'Confira as princicipais dúvidas',
+              subTitulo: 'Confira as principais dúvidas',
               child: ListaDuvidas(),
               color: Colors.black),
         ],

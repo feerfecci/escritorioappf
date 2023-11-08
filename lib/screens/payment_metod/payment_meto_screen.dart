@@ -7,6 +7,7 @@ import 'package:escritorioappf/widgets/nested_scroll.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import '../../consts/consts.dart';
 import '../../logado.dart' as logado;
 import '../../Consts/consts_widget.dart';
 import '../../widgets/alert_dialogs/alert_vazio.dart';
@@ -68,11 +69,11 @@ class _PaymentMethodState extends State<PaymentMethod> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       endDrawer:
-          CustomDrawer(fundo: "${logado.fundoAssets}forma-pagamento.jpg"),
+          CustomDrawer(fundo: "${Consts.fundoAssets}forma-pagamento.jpg"),
       body: Stack(
         children: [
           MeuNested(
-            imageAsset: "${logado.fundoAssets}forma-pagamento.jpg",
+            imageAsset: "${Consts.fundoAssets}forma-pagamento.jpg",
             context: context,
             body: RefreshIndicator(
               onRefresh: () async {

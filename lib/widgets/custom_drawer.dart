@@ -6,7 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../logado.dart' as logado;
 import '../../Consts/consts_widget.dart';
-import '../../Consts/consts_widget.dart';
+import '../Consts/Consts.dart';
+import '../Consts/consts_future.dart';
 import '../repository/theme_provider.dart';
 import '../screens/politica_privacidade/politica_privacidade.dart';
 import '../repository/shared_preferences.dart';
@@ -42,7 +43,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
         title: Text(
           text,
           style: TextStyle(
-            fontSize: logado.fontTitulo,
+            fontSize: Consts.fontTitulo,
           ),
         ),
       );
@@ -85,7 +86,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     style: TextStyle(
                       fontSize: 30,
                       color:
-                          widget.fundo == '${logado.fundoAssets}principal.jpg'
+                          widget.fundo == '${Consts.fundoAssets}principal.jpg'
                               ? Colors.black
                               : Colors.white,
                     ),
@@ -93,10 +94,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
               ),
               buildListTile(onTap: () {
-                logado.navigatorRoute(context, PlanosScreen());
+                ConstsFuture.navigatorPageRoute(context, PlanosScreen());
               }, 'Planos', Icon(Icons.assignment_ind_rounded)),
               buildListTile(onTap: () {
-                logado.navigatorRoute(context, PaymentMethod());
+                ConstsFuture.navigatorPageRoute(context, PaymentMethod());
               }, 'Forma de Pagamento', Icon(Icons.attach_money)),
               buildListTile(
                 'Suporte via Whatsapp',
@@ -109,7 +110,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 'Política de Privacidade',
                 Icon(Icons.privacy_tip_outlined),
                 onTap: () {
-                  logado.navigatorRoute(context, PoliticaPrivacidade());
+                  ConstsFuture.navigatorPageRoute(
+                      context, PoliticaPrivacidade());
                 },
               ),
               ChangeThemeButtonWidget(),
@@ -135,7 +137,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       logado.nomeSaudacao = '';
                       logado.sessCar = '';
                       logado.statusCliente = '';
-                      logado.navigatorRoute(context, LoginScreen());
+                      ConstsFuture.navigatorPageRoute(context, LoginScreen());
                     });
                   },
                 ),

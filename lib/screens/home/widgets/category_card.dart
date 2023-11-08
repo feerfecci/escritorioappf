@@ -1,8 +1,8 @@
 import 'package:escritorioappf/widgets/box_shadow.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badge;
+import '../../../Consts/consts_future.dart';
 import '../../../Consts/consts_widget.dart';
-import '../../../logado.dart' as logado;
 
 class CategoryCard extends StatefulWidget {
   final String iconApi;
@@ -32,7 +32,7 @@ class _CategoryCardState extends State<CategoryCard> {
       onTap: () {
         setState(() {
           widget.contagem;
-          logado.navigatorRoute(context, widget.screen);
+          ConstsFuture.navigatorPageRoute(context, widget.screen);
         });
       },
       child: MeuBoxShadow(

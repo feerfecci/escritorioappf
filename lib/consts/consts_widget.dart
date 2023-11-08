@@ -3,6 +3,18 @@ import 'package:flutter/material.dart';
 import 'consts.dart';
 
 class ConstsWidget {
+  static Widget buildPadding001(BuildContext context,
+      {double horizontal = 0, double vertical = 0.01, required Widget? child}) {
+    var size = MediaQuery.of(context).size;
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        vertical: size.height * vertical,
+        horizontal: size.width * horizontal,
+      ),
+      child: child,
+    );
+  }
+
   static Widget buildTextTitle(String title,
       {double? fontSize,
       TextAlign? textAlign,

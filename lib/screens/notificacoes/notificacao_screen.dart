@@ -3,6 +3,7 @@ import 'package:escritorioappf/widgets/fundo_screen.dart';
 import 'package:escritorioappf/widgets/nested_scroll.dart';
 import 'package:escritorioappf/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
+import '../../consts/consts.dart';
 import '../../widgets/cabecalho.dart';
 import '../../widgets/custom_drawer.dart';
 import 'lista_notificacao.dart';
@@ -23,9 +24,9 @@ class _NotificacaoScreenState extends State<NotificacaoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      endDrawer: CustomDrawer(fundo: '${logado.fundoAssets}notificacoes.jpg'),
+      endDrawer: CustomDrawer(fundo: '${Consts.fundoAssets}notificacoes.jpg'),
       body: MeuNested(
-        imageAsset: '${logado.fundoAssets}notificacoes.jpg',
+        imageAsset: '${Consts.fundoAssets}notificacoes.jpg',
         context: context,
         body: RefreshIndicator(
           onRefresh: () async {

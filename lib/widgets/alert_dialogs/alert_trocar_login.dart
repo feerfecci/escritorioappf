@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:escritorioappf/widgets/shimmer_widget.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import '../../itens_bottom.dart';
+import '../../consts/consts.dart';
 import '../../logado.dart';
 import '../erro_servidor.dart';
 import '/logado.dart' as logado;
@@ -10,7 +10,7 @@ import '/logado.dart' as logado;
 alertaDialogTrocarLogin(BuildContext context) {
   loginDenovo() async {
     var url = Uri.parse(
-        '${logado.comecoAPI}login/?fn=login&email=${logado.emailUser}&senha=${logado.senhaUser}');
+        '${Consts.comecoAPI}login/?fn=login&email=${logado.emailUser}&senha=${logado.senhaUser}');
     var resposta = await http.get(url);
     if (resposta.statusCode == 200) {
       return json.decode(resposta.body);
@@ -82,7 +82,8 @@ alertaDialogTrocarLogin(BuildContext context) {
                           backgroundColor: logado.kButtonColor,
                           fixedSize: Size.fromWidth(double.maxFinite),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(borderButton),
+                            borderRadius:
+                                BorderRadius.circular(Consts.borderButton),
                           ),
                         ),
                         onPressed: () {

@@ -5,6 +5,8 @@ import '../../../logado.dart' as logado;
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../../consts/consts.dart';
+
 class PoliticaPrivacidade extends StatefulWidget {
   const PoliticaPrivacidade({super.key});
 
@@ -13,7 +15,7 @@ class PoliticaPrivacidade extends StatefulWidget {
 }
 
 politicaApi() async {
-  final url = Uri.parse('${logado.comecoAPI}politica_privacidade');
+  final url = Uri.parse('${Consts.comecoAPI}politica_privacidade');
   var resposta = await http.get(url);
 
   if (resposta.statusCode == 200) {
@@ -52,7 +54,7 @@ class _PoliticaPrivacidadeState extends State<PoliticaPrivacidade> {
                             EdgeInsets.symmetric(vertical: size.height * 0.04),
                         child: Image(
                           image: NetworkImage(
-                              '${logado.arquivoAssets}logo-login-f.png'),
+                              '${Consts.arquivoAssets}logo-login-f.png'),
                         ),
                       ),
                       Html(

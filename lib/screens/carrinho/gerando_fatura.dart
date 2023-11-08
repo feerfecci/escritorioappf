@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../widgets/erro_servidor.dart';
 import '../../widgets/progress_indicator.dart';
-import 'carrinho_screen.dart';
 import '../../logado.dart' as logado;
 import '../../Consts/consts_widget.dart';
 

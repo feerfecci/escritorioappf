@@ -1,7 +1,5 @@
 import 'package:escritorioappf/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:escritorioappf/logado.dart' as logado;
-
 import '../Consts/consts_widget.dart';
 
 Widget Cabecalho(

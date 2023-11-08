@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import '../../../logado.dart' as logado;
-import '../../Consts/consts_widget.dart';
-import '../../Consts/consts_widget.dart';
 
 light_theme(BuildContext context) {
   return ThemeData(

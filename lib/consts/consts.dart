@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class Consts {
@@ -27,8 +29,8 @@ class Consts {
   static String statusCliente = '';
   static String tokenIugu =
 //"0D" teste
-      //'0D77FB693D61B5A215E22544A637660B51B4FE40781CD0395FB8FCAC1FDFC7AE';
-      '2D283E3209868E23A3BEA593AF76B115E9DE073AE77AA1C6F6A2DD2E84A59E0A';
+      '0D77FB693D61B5A215E22544A637660B51B4FE40781CD0395FB8FCAC1FDFC7AE';
+  // '2D283E3209868E23A3BEA593AF76B115E9DE073AE77AA1C6F6A2DD2E84A59E0A';
   static const String comecoAPI = 'https://evbrapp.com/api/';
   static const String fundoAssets = 'https://escritorioapp.com/img/fundo-tela-';
   static const String iconAssets = 'https://escritorioapp.com/img/ico-';

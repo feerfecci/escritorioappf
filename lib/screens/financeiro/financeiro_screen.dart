@@ -1,9 +1,9 @@
 import 'package:escritorioappf/widgets/nested_scroll.dart';
 import 'package:flutter/material.dart';
+import '../../consts/consts.dart';
 import '../../widgets/cabecalho.dart';
 import '../../widgets/custom_drawer.dart';
 import 'lista_faturas.dart';
-import '../../logado.dart' as logado;
 
 class FinanceiroScreen extends StatefulWidget {
   const FinanceiroScreen({Key? key}) : super(key: key);
@@ -20,10 +20,10 @@ class _FinanceiroScreenState extends State<FinanceiroScreen> {
     return Scaffold(
         extendBodyBehindAppBar: true,
         endDrawer: CustomDrawer(
-          fundo: '${logado.fundoAssets}financeiro.jpg',
+          fundo: '${Consts.fundoAssets}financeiro.jpg',
         ),
         body: MeuNested(
-          imageAsset: "${logado.fundoAssets}financeiro.jpg",
+          imageAsset: "${Consts.fundoAssets}financeiro.jpg",
           context: context,
           body: RefreshIndicator(
             onRefresh: () async {

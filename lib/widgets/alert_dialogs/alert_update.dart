@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import '../../consts/consts.dart';
 import '../../Consts/consts_widget.dart';
-import '/logado.dart' as logado;
 import 'package:url_launcher/url_launcher.dart';
 
 alertDialogUpdate(BuildContext context) {
@@ -29,7 +29,7 @@ alertDialogUpdate(BuildContext context) {
                           EdgeInsets.symmetric(vertical: size.height * 0.025),
                       child: Image(
                         image: NetworkImage(
-                            '${logado.arquivoAssets}logo-login-f.png'),
+                            '${Consts.arquivoAssets}logo-login-f.png'),
                       ),
                     ),
                     // Container(

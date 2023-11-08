@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../logado.dart' as logado;
-
+import '../../consts/consts.dart';
 import '../../widgets/cabecalho.dart';
 import '../../widgets/custom_drawer.dart';
 import '../../widgets/nested_scroll.dart';
@@ -20,11 +19,11 @@ class _MeuPerfilScreenState extends State<MeuPerfilScreen> {
       resizeToAvoidBottomInset: true,
       extendBody: true,
       extendBodyBehindAppBar: true,
-      endDrawer: CustomDrawer(fundo: '${logado.fundoAssets}perfil.jpg'),
+      endDrawer: CustomDrawer(fundo: '${Consts.fundoAssets}perfil.jpg'),
       body: Stack(
         children: [
           MeuNested(
-            imageAsset: '${logado.fundoAssets}perfil.jpg',
+            imageAsset: '${Consts.fundoAssets}perfil.jpg',
             context: context,
             body: RefreshIndicator(
               onRefresh: () async {

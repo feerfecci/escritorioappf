@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../logado.dart' as logado;
+import '../../consts/consts.dart';
 
 // ignore: must_be_immutable
 class CampoVazio extends StatefulWidget {
@@ -23,7 +23,7 @@ class CampoVazioState extends State<CampoVazio> {
           SizedBox(
               width: size.width * 0.6,
               height: size.height * 0.4,
-              child: Image.network('${logado.arquivoAssets}ico-lupa.png')),
+              child: Image.network('${Consts.arquivoAssets}ico-lupa.png')),
           Text(
             '${widget.mensagemAvisoVazio}',
             textAlign: TextAlign.center,

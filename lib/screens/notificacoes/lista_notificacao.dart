@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 library globals;
 
 import 'package:badges/badges.dart' as badge;
@@ -9,7 +11,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-import 'package:url_launcher/url_launcher.dart';
+import '../../consts/consts.dart';
 import '../../logado.dart' as logado;
 import '../../Consts/consts_widget.dart';
 import '../../widgets/erro_servidor.dart';
@@ -28,7 +30,7 @@ class ListaNotificacao extends StatefulWidget {
 notificacaoApi() async {
   try {
     var url = Uri.parse(
-        '${logado.comecoAPI}notificacoes/?fn=read&idcliente=${logado.idCliente}');
+        '${Consts.comecoAPI}notificacoes/?fn=read&idcliente=${logado.idCliente}');
     var resposta = await http.get(url);
 
     if (resposta.statusCode == 200) {
@@ -43,7 +45,7 @@ notificacaoApi() async {
 
 mudaStatus(int idNotific) async {
   var url = Uri.parse(
-      '${logado.comecoAPI}notificacoes/?fn=update&lida=1&id=$idNotific');
+      '${Consts.comecoAPI}notificacoes/?fn=update&lida=1&id=$idNotific');
   var resposta = await http.get(url);
 
   if (resposta.statusCode == 200) {

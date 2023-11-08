@@ -2,6 +2,7 @@ import 'package:flutter_html/flutter_html.dart';
 
 import 'package:flutter/material.dart';
 
+import '../../Consts/consts_future.dart';
 import '../../screens/financeiro/financeiro_screen.dart';
 import '/logado.dart' as logado;
 
@@ -51,8 +52,8 @@ alertaDialogDevendo(context) {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blue),
                         onPressed: () {
-                      logado.navigatorRoute(context,FinanceiroScreen());
-                          
+                          ConstsFuture.navigatorPageRoute(
+                              context, FinanceiroScreen());
                         },
                         child: Text(
                           'Ver pendencia',

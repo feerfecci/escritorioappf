@@ -4,6 +4,7 @@ import 'package:badges/badges.dart' as badge;
 import 'package:escritorioappf/screens/carrinho/widgets/lista_itens_carrinho.dart';
 import 'package:escritorioappf/widgets/fundo_screen.dart';
 import 'package:flutter/material.dart';
+import 'Consts/Consts.dart';
 import 'screens/carrinho/carrinho_screen.dart';
 import 'screens/duvidas/duvidas_screen.dart';
 import 'screens/home/home_principal.dart';
@@ -111,7 +112,7 @@ class _ItensBottomState extends State<ItensBottom> {
         extendBody: true,
         extendBodyBehindAppBar: true,
         endDrawer: CustomDrawer(
-          fundo: '${logado.fundoAssets}principal.jpg',
+          fundo: '${Consts.fundoAssets}principal.jpg',
         ),
         bottomNavigationBar: ConstsWidget.buildLayout(
           context,
@@ -120,7 +121,7 @@ class _ItensBottomState extends State<ItensBottom> {
         ),
         body: Stack(
           children: [
-            FundoScreen('${logado.fundoAssets}principal.jpg'),
+            FundoScreen('${Consts.fundoAssets}principal.jpg'),
             ConstsWidget.buildLayout(context,
                 seMobile: NestedScrollView(
                   headerSliverBuilder:
@@ -133,7 +134,7 @@ class _ItensBottomState extends State<ItensBottom> {
                               top: size.height * 0.0115),
                           child: SizedBox(
                             child: Image.network(
-                                '${logado.arquivoAssets}logo-topo-app.png'),
+                                '${Consts.arquivoAssets}logo-topo-app.png'),
                           ),
                         ),
                         iconTheme: IconThemeData(
@@ -172,7 +173,7 @@ class _ItensBottomState extends State<ItensBottom> {
                               left: size.width * 0.02,
                               top: size.width * 0.0001),
                           child: Image.network(
-                              '${logado.arquivoAssets}logo-topo-app.png'),
+                              '${Consts.arquivoAssets}logo-topo-app.png'),
                         ),
                         iconTheme: IconThemeData(
                           color: Colors.black,

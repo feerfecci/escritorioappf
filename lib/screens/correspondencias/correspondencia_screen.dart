@@ -4,6 +4,7 @@ import 'package:escritorioappf/widgets/fundo_screen.dart';
 import 'package:escritorioappf/widgets/nested_scroll.dart';
 import 'package:escritorioappf/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
+import '../../consts/consts.dart';
 import 'lista_correspondencia.dart';
 import '../../widgets/custom_drawer.dart';
 import '../../itens_bottom.dart';
@@ -23,10 +24,10 @@ class _CorrespondenciasScreenState extends State<CorrespondenciasScreen> {
         extendBody: true,
         extendBodyBehindAppBar: true,
         endDrawer: CustomDrawer(
-          fundo: '${logado.fundoAssets}correspondencias.jpg',
+          fundo: '${Consts.fundoAssets}correspondencias.jpg',
         ),
         body: MeuNested(
-          imageAsset: "${logado.fundoAssets}correspondencias.jpg",
+          imageAsset: "${Consts.fundoAssets}correspondencias.jpg",
           context: context,
           body: RefreshIndicator(
             onRefresh: () async {

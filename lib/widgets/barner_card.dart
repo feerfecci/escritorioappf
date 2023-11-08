@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../logado.dart' as logado;
+import '../Consts/Consts.dart';
 
 class BanerCard extends StatefulWidget {
   final String baner;
@@ -18,7 +18,7 @@ class _BanerCardState extends State<BanerCard> {
       decoration: BoxDecoration(
         image: DecorationImage(
             image: NetworkImage(
-              '${logado.arquivoAssets}${widget.baner}',
+              '${Consts.arquivoAssets}${widget.baner}',
             ),
             fit: BoxFit.fill),
         borderRadius: BorderRadius.all(Radius.circular(16)),
